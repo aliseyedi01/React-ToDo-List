@@ -2,6 +2,7 @@ import React from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { MdSchool } from "react-icons/md";
+import AddCategory from "./NewCategory";
 
 const categories = [
   {
@@ -29,6 +30,7 @@ export default function ListCategories({ isCategoryOpen }) {
           </li>
         ))}
       </ul>
+      <AddCategory />
     </div>
   );
 }
