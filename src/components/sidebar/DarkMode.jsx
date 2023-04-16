@@ -1,7 +1,7 @@
 import React from "react";
 import useDarkMode from "../../hooks/useDarkMode";
-import { Button } from "../customs/@core";
 import { HiSun, HiMoon } from "react-icons/hi";
+import { Button } from "../customs/@core";
 
 export default function DarkMode() {
   const [darkMode, setDarkMode, handleThemeChange] = useDarkMode();
