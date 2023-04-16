@@ -1,5 +1,6 @@
 import { TiThMenu } from "react-icons/ti";
 import SearchTask from "./SearchTask";
+import Time from "./Time";
 
 export default function Header() {
   return (
@@ -8,6 +9,7 @@ export default function Header() {
         <TiThMenu className="m-3 text-2xl text-red-500" />
       </button>
       <SearchTask />
+      <Time />
     </header>
   );
 }
