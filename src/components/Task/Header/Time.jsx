@@ -13,5 +13,9 @@ export default function Time() {
   }, []);
 
   console.log(currentDate);
-  return <div className="font-Montserrat">{currentDate}</div>;
+  return (
+    <div className="font-Montserrat font-bold text-Light_OnSurface dark:text-Dark_OnSurface">
+      {currentDate}
+    </div>
+  );
 }
