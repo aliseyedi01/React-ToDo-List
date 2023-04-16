@@ -1,18 +1,19 @@
-import { IoIosToday } from "react-icons/io";
+import { IoIosArrowDown, IoIosToday } from "react-icons/io";
 import { BsListTask } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { MdRemoveDone, MdDoneAll } from "react-icons/md";
+import { useState } from "react";
 
 const Items = [
   {
-    name: "Today's tasks",
-    path: "/today",
-    icon: <IoIosToday />,
-  },
-  {
-    name: "All Tasks",
+    name: "All",
     path: "/",
     icon: <BsListTask />,
+  },
+  {
+    name: "Today",
+    path: "/today",
+    icon: <IoIosToday />,
   },
   {
     name: "Important",
@@ -32,19 +33,36 @@ const Items = [
 ];
 
 export default function TaskItem() {
+  const [isTaskOpen, setIsTaskOpen] = useState(false);
+
+  const toggleTaskOpen = () => {
+    setIsTaskOpen((prevState) => !prevState);
+  };
+
   return (
-    <div className="mt-8 h-max items-start self-start">
-      <ul>
-        {Items.map((item, i) => (
-          <li
-            key={i}
-            className=" flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-rose-600 transition hover:text-rose-800 dark:text-slate-300 dark:hover:text-slate-100"
-          >
-            {item.icon}
-            {item.name}
-          </li>
-        ))}
-      </ul>
+    <div className=" mt-4 h-max w-full items-start self-start px-3 text-red-500 dark:text-gray-400">
+      <button
+        className=" flex w-full items-center justify-between font-Montserrat"
+        onClick={toggleTaskOpen}
+      >
+        Task
+        <IoIosArrowDown
+          className={`mr-2 h-3 w-3  transition duration-300 ${isTaskOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div className={!isTaskOpen ? "visible" : "hidden"}>
+        <ul>
+          {Items.map((item, i) => (
+            <li
+              key={i}
+              className=" flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-rose-600 transition hover:text-rose-800 dark:text-slate-300 dark:hover:text-slate-100"
+            >
+              {item.icon}
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

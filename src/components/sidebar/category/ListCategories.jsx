@@ -23,7 +23,7 @@ export default function ListCategories({ isCategoryOpen }) {
     <div className={!isCategoryOpen ? "visible" : "hidden"}>
       <ul>
         {categories.map((category, i) => (
-          <li key={i} className="flex items-center gap-2 py-1 pl-2">
+          <li key={i} className="flex cursor-pointer items-center gap-2 pl-4 pt-3  ">
             {category.icon}
             {category.name}
           </li>
