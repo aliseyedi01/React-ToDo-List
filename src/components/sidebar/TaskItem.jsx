@@ -33,7 +33,7 @@ const Items = [
 
 export default function TaskItem() {
   return (
-    <div className="mt-8 h-full items-start self-start">
+    <div className="mt-8 h-max items-start self-start">
       <ul>
         {Items.map((item, i) => (
           <li
