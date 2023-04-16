@@ -3,9 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lemon&display=swap");
 
-body {
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
