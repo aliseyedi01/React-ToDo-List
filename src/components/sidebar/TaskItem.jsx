@@ -40,7 +40,7 @@ export default function TaskItem() {
   };
 
   return (
-    <div className=" mt-4 h-max w-full items-start self-start px-3 text-red-500 dark:text-gray-400">
+    <div className=" mt-4 h-max w-full items-start self-start px-3 text-Light_OnSurface dark:text-Dark_OnSurface">
       <button
         className=" flex w-full items-center justify-between font-Montserrat"
         onClick={toggleTaskOpen}
@@ -55,7 +55,7 @@ export default function TaskItem() {
           {Items.map((item, i) => (
             <li
               key={i}
-              className=" flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-rose-600 transition hover:text-rose-800 dark:text-slate-300 dark:hover:text-slate-100"
+              className=" flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-Light_OnSurface transition hover:text-rose-800 dark:text-Dark_OnSurface dark:hover:text-slate-100"
             >
               {item.icon}
               {item.name}

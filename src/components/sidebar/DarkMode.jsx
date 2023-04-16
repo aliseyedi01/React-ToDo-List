@@ -9,13 +9,13 @@ export default function DarkMode() {
   return (
     <Button onClick={handleThemeChange}>
       {!darkMode ? (
-        <p className="flex gap-2 text-base text-yellow-400 ">
-          <HiSun className="text-2xl text-yellow-400 " />
+        <p className="flex gap-2 text-base text-Light_OnPrimary dark:text-Dark_OnPrimary ">
+          <HiSun className="text-2xl  " />
           Light Mode
         </p>
       ) : (
-        <p className=" flex gap-2 text-base text-white">
-          <HiMoon className="text-2xl text-white" />
+        <p className=" flex gap-2 text-base text-Light_OnPrimary dark:text-Dark_OnPrimary">
+          <HiMoon className="text-2xl " />
           Dark Mode
         </p>
       )}
