@@ -5,7 +5,7 @@ import { FaFilter, FaThList } from "react-icons/fa";
 
 const Filters = ["Newest", "Oldest", "Done", "UnDo", "Order"];
 
-export default function TaskSort() {
+export default function TaskSort({ setIsListInView }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortName, setSortName] = useState("Newest");
   const filterRef = useRef(null);
@@ -33,10 +33,20 @@ export default function TaskSort() {
     <div className="flex gap-2">
       {/* view button */}
       <div className="flex h-max  items-center rounded-lg bg-white ">
-        <button className="rounded-lg  px-2 py-1 hover:bg-gray-400">
+        <button
+          className="rounded-lg  px-2 py-1 hover:bg-gray-400"
+          onClick={() => {
+            setIsListInView(true);
+          }}
+        >
           <FaThList className="text-2xl  " />
         </button>
-        <button className="rounded-lg bg-slate-400 px-2 py-1 hover:bg-gray-400">
+        <button
+          className="rounded-lg bg-slate-400 px-2 py-1 hover:bg-gray-400"
+          onClick={() => {
+            setIsListInView(false);
+          }}
+        >
           <BsGridFill className="text-2xl" />
         </button>
       </div>
