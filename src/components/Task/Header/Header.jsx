@@ -3,6 +3,7 @@ import SearchTask from "./SearchTask";
 import Time from "./Time";
 import Accounts from "./Accounts";
 import Notification from "./Notification";
+import DarkMode from "../../sidebar/DarkMode";
 
 export default function Header() {
   return (
@@ -14,6 +15,7 @@ export default function Header() {
       <Time />
       <div className="flex items-center gap-5">
         <Notification />
+        <DarkMode />
         <Accounts />
       </div>
     </header>

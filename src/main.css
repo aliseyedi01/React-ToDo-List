@@ -4,8 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lemon&display=swap");
 
 * {
-  box-sizing: border-box;
+  @apply box-border transition-colors duration-200;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
