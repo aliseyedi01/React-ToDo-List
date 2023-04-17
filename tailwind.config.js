@@ -29,6 +29,9 @@ export default {
         DynaPuff: ["DynaPuff", "sans-serif"],
         Lemon: ['"Lemon"', "serif"],
       },
+      lineClamp: {
+        7: "7",
+      },
     },
   },
   plugins: [require("prettier-plugin-tailwindcss")],
