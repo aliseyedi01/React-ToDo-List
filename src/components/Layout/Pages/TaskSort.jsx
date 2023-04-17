@@ -5,7 +5,7 @@ import { FaFilter, FaThList } from "react-icons/fa";
 
 const Filters = ["Newest", "Oldest", "Done", "UnDo", "Order"];
 
-export default function TaskSort({ setIsListInView }) {
+export default function TaskSort({ isListInView, setIsListInView }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortName, setSortName] = useState("Newest");
   const filterRef = useRef(null);
@@ -34,7 +34,7 @@ export default function TaskSort({ setIsListInView }) {
       {/* view button */}
       <div className="flex h-max  items-center rounded-lg bg-white ">
         <button
-          className="rounded-lg  px-2 py-1 hover:bg-gray-400"
+          className={`rounded-lg  px-2 py-1 hover:bg-sky-400 ${isListInView ? "bg-sky-400" : ""}`}
           onClick={() => {
             setIsListInView(true);
           }}
@@ -42,7 +42,7 @@ export default function TaskSort({ setIsListInView }) {
           <FaThList className="text-2xl  " />
         </button>
         <button
-          className="rounded-lg bg-slate-400 px-2 py-1 hover:bg-gray-400"
+          className={`rounded-lg  px-2 py-1 hover:bg-sky-400 ${!isListInView ? "bg-sky-400" : ""}`}
           onClick={() => {
             setIsListInView(false);
           }}
