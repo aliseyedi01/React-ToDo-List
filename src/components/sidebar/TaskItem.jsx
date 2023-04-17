@@ -3,6 +3,7 @@ import { BsListTask } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { MdRemoveDone, MdDoneAll } from "react-icons/md";
 import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Items = [
   {
@@ -34,6 +35,8 @@ const Items = [
 
 export default function TaskItem() {
   const [isTaskOpen, setIsTaskOpen] = useState(false);
+  const route = useLocation();
+  const currentPath = route.pathname;
 
   const toggleTaskOpen = () => {
     setIsTaskOpen((prevState) => !prevState);
@@ -53,12 +56,16 @@ export default function TaskItem() {
       <div className={!isTaskOpen ? "visible" : "hidden"}>
         <ul>
           {Items.map((item, i) => (
-            <li
-              key={i}
-              className=" flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100"
-            >
-              {item.icon}
-              {item.name}
+            <li key={i}>
+              <NavLink
+                to={item.path}
+                className={`flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 ${
+                  currentPath === item.path ? "rounded-lg bg-gray-300 dark:bg-indigo-800" : ""
+                }`}
+              >
+                {item.icon}
+                {item.name}
+              </NavLink>
             </li>
           ))}
         </ul>
