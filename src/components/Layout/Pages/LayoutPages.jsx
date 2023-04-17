@@ -5,7 +5,9 @@ export default function LayoutPages() {
   return (
     <div className="p-10">
       <div className="flex items-center justify-between">
-        <h1 className="font-Montserrat text-xl">All Task</h1>
+        <h1 className="font-Montserrat text-xl text-Light_OnSurface dark:text-Dark_OnSurface">
+          All Task
+        </h1>
         <TaskSort />
       </div>
     </div>

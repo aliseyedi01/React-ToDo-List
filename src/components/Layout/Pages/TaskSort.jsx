@@ -31,15 +31,17 @@ export default function TaskSort() {
 
   return (
     <div className="flex gap-2">
-      <div className="flex items-center  rounded-lg bg-white ">
-        <button className="rounded-lg bg-slate-400 p-2 px-2 hover:bg-gray-400">
-          <FaThList className="text-xl " />
+      {/* view button */}
+      <div className="flex h-max  items-center rounded-lg bg-white ">
+        <button className="rounded-lg  px-2 py-1 hover:bg-gray-400">
+          <FaThList className="text-2xl  " />
         </button>
-        <button className="rounded-lg p-2 px-2 hover:bg-gray-400">
-          <BsGridFill className="text-xl" />
+        <button className="rounded-lg bg-slate-400 px-2 py-1 hover:bg-gray-400">
+          <BsGridFill className="text-2xl" />
         </button>
       </div>
 
+      {/* filter button */}
       <div ref={filterRef} className="relative ">
         <button
           className=" flex w-44 items-center gap-2 rounded-lg bg-white px-2 py-1 font-DynaPuff"
