@@ -1,13 +1,13 @@
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { BsCheckSquareFill } from "react-icons/bs";
-import { ImCheckboxUnchecked } from "react-icons/im";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import ModalConfirm from "../../modal/ModalConfirm";
+import ModalEdit from "../../modal/ModalEdit";
+import { DoneButton, ImportButton } from "../../Utilities";
 
 export default function TaskAction() {
   const [showModalConfirm, setShowModalConfirm] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
 
   return (
     <div className="flex items-center justify-between pt-1">
@@ -18,15 +18,10 @@ export default function TaskAction() {
       {/* button action */}
       <div className="flex items-center gap-1 text-2xl text-Light_OnSurface dark:text-Dark_OnSurface ">
         {/* Done */}
-        <button className="flex gap-2" title="Done">
-          <BsCheckSquareFill />
-          {/* <ImCheckboxUnchecked /> */}
-        </button>
-        {/* Import */}
-        <button className="flex gap-2" title="Important">
-          <AiFillStar />
-          {/* <AiOutlineStar /> */}
-        </button>
+        <DoneButton />
+
+        {/* Important */}
+        <ImportButton />
 
         {/* Delete */}
 
@@ -49,7 +44,22 @@ export default function TaskAction() {
         </button>
 
         {/* Edit */}
-        <button title="Edit">
+
+        {showModalEdit && (
+          <ModalEdit
+            text="This task Edit"
+            onClose={() => {
+              setShowModalEdit(false);
+            }}
+          />
+        )}
+
+        <button
+          title="Edit"
+          onClick={() => {
+            setShowModalEdit(true);
+          }}
+        >
           <FiEdit />
         </button>
       </div>
