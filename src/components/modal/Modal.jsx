@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
 
 export default function Modal({ children, title, onClose }) {
+  const [closing, setClosing] = useState(false);
+
   const onCloseHandler = (event) => {
-    // console.log("event.target", event.target);
-    // console.log("event.currentTarget", event.currentTarget);
     if (event.target === event.currentTarget) {
-      onClose();
+      setClosing(true);
+      setTimeout(() => {
+        onClose();
+      }, 300);
     }
   };
 
   return (
     <div
-      className=" fixed inset-0 z-40 grid h-full w-full place-items-center bg-slate-600/[0.5]   text-xs text-slate-600  dark:text-slate-300 sm:text-sm xl:text-base"
+      className=" fixed inset-0 z-40 grid h-full w-full place-items-center bg-slate-600/[0.5] text-xs  text-slate-600 backdrop-blur-sm  dark:text-slate-300 sm:text-sm xl:text-base"
       onClick={onCloseHandler}
     >
-      <section className=" relative flex w-full max-w-lg flex-col justify-start rounded-lg bg-slate-200 p-3 opacity-100 dark:bg-slate-900 sm:p-5">
+      <section
+        className={` relative flex w-full max-w-lg  flex-col justify-start rounded-lg bg-slate-200 p-3 opacity-100 dark:bg-slate-900 sm:p-5 ${
+          closing ? "animate-scale-down-center" : "animate-scale-up-center"
+        }`}
+      >
         <RiCloseCircleFill
           className="absolute right-3 cursor-pointer  text-2xl sm:right-4"
           onClick={onClose}
