@@ -12,6 +12,12 @@ export default function Modal({ children, title, onClose }) {
       }, 300);
     }
   };
+  const onCloseButton = (event) => {
+    setClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  };
 
   return (
     <div
@@ -25,7 +31,7 @@ export default function Modal({ children, title, onClose }) {
       >
         <RiCloseCircleFill
           className="absolute right-3 cursor-pointer  text-2xl sm:right-4"
-          onClick={onClose}
+          onClick={onCloseButton}
         />
         <h2 className="mb-5 font-Lemon text-xl font-bold md:text-xl">{title}</h2>
         {children}
