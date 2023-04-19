@@ -30,16 +30,16 @@ export default function TaskSort({ isListInView, setIsListInView }) {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="mt-2 flex gap-2 md:mt-0 md:w-max ">
       {/* view button */}
-      <div className="flex h-max  items-center rounded-lg bg-white ">
+      <div className="flex h-max items-center rounded-lg bg-white ">
         <button
           className={`rounded-lg  px-2 py-1  ${isListInView ? "bg-sky-400" : ""}`}
           onClick={() => {
             setIsListInView(true);
           }}
         >
-          <FaThList className="text-2xl  " />
+          <FaThList className="text-base md:text-2xl  " />
         </button>
         <button
           className={`rounded-lg  px-2 py-1  ${!isListInView ? "bg-sky-400" : ""}`}
@@ -47,17 +47,17 @@ export default function TaskSort({ isListInView, setIsListInView }) {
             setIsListInView(false);
           }}
         >
-          <BsGridFill className="text-2xl" />
+          <BsGridFill className="text-base md:text-2xl " />
         </button>
       </div>
 
       {/* filter button */}
-      <div ref={filterRef} className="relative ">
+      <div ref={filterRef} className="relative   ">
         <button
-          className=" flex w-44 items-center gap-2 rounded-lg bg-white px-2 py-1 font-DynaPuff"
+          className=" flex  w-[137px] items-center gap-1 rounded-lg bg-white px-1 py-1 font-DynaPuff text-sm md:w-44  md:px-2 md:text-base"
           onClick={toggleFilterOpen}
         >
-          <FaFilter /> <span className=" font-Rubik">Filter :</span> {sortName}
+          <FaFilter /> <span className=" font-Rubik ">Filter :</span> {sortName}
         </button>
         <ul
           className={`absolute left-3 top-9 list-inside list-disc rounded-md bg-slate-400 py-1  pl-3 pr-10 font-DynaPuff text-sm text-slate-800 ${
@@ -66,7 +66,7 @@ export default function TaskSort({ isListInView, setIsListInView }) {
         >
           {Filters.map((filter, i) => {
             return (
-              <li key={i} className="cursor-pointer hover:text-slate-100 " onClick={getSortFilter}>
+              <li key={i} className="cursor-pointer  hover:text-slate-100 " onClick={getSortFilter}>
                 {filter}
               </li>
             );

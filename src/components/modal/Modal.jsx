@@ -19,7 +19,7 @@ export default function Modal({ children, title, onClose }) {
       onClick={onCloseHandler}
     >
       <section
-        className={` relative flex w-full max-w-lg  flex-col justify-start rounded-lg bg-slate-200 p-3 opacity-100 dark:bg-slate-900 sm:p-5 ${
+        className={` relative flex w-full max-w-xs  flex-col justify-start rounded-lg bg-slate-200 p-3 opacity-100 dark:bg-slate-900 sm:p-5 md:max-w-lg ${
           closing ? "animate-scale-down-center" : "animate-scale-up-center"
         }`}
       >

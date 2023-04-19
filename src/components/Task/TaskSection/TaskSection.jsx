@@ -6,7 +6,7 @@ import { Home, TaskCategory, TaskDone, TaskImportant, TaskSearch, TaskToday } fr
 
 export default function TaskSection() {
   return (
-    <main className=" h-full w-[80%]  bg-Light_Background  dark:bg-Dark_Background ">
+    <main className=" h-full w-full bg-Light_Background  dark:bg-Dark_Background  md:w-[80%] ">
       <Header />
       <LayoutPages />
       <Routes>

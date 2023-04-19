@@ -9,9 +9,9 @@ export default function DarkMode() {
   return (
     <Button onClick={handleThemeChange}>
       {!darkMode ? (
-        <HiSun className="text-2xl text-Light_OnPrimary dark:text-Dark_OnPrimary  " />
+        <HiSun className="text-lg text-Light_OnPrimary dark:text-Dark_OnPrimary md:text-2xl  " />
       ) : (
-        <HiMoon className="text-2xl text-Light_OnPrimary dark:text-Dark_OnPrimary " />
+        <HiMoon className="text-lg text-Light_OnPrimary dark:text-Dark_OnPrimary md:text-2xl " />
       )}
     </Button>
   );

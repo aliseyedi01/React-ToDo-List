@@ -17,7 +17,7 @@ export default function Sidebar() {
         onClick={() => dispatch({ type: "CLOSE_MENU" })}
       ></div>
       <div
-        className={`z-40  h-screen w-60 items-center justify-start bg-Light_Surface py-4  text-Light_OnSurface  shadow-md shadow-gray-400 dark:bg-Dark_Surface dark:text-Dark_OnSurface max-md:fixed  md:block  md:w-[20%] ${
+        className={`z-40  h-screen w-60 items-center justify-start bg-Light_Surface py-4  text-Light_OnSurface  shadow-md shadow-gray-400 dark:bg-Dark_Surface dark:text-Dark_OnSurface dark:shadow-gray-800 max-md:fixed md:block  md:w-[20%]  md:shadow-none ${
           state.isOpenMenu ? "" : "hidden"
         }`}
       >
