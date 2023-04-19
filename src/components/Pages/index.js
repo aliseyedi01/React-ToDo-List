@@ -5,5 +5,6 @@ import TaskDone from "./TaskDone";
 import TaskImportant from "./TaskImportant";
 import TaskSearch from "./TaskSearch";
 import TaskToday from "./TaskToday";
+import TaskToDo from "./TaskToDo";
 
-export { Home, TaskAll, TaskCategory, TaskDone, TaskImportant, TaskSearch, TaskToday };
+export { Home, TaskAll, TaskCategory, TaskDone, TaskImportant, TaskSearch, TaskToday, TaskToDo };

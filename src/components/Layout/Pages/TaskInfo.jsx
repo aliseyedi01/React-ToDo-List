@@ -1,12 +1,14 @@
 import { BsCalendar2Week } from "react-icons/bs";
 
-export default function TaskInfo({ isListInView }) {
+export default function TaskInfo({ isListInView, task }) {
+  const { title, date, description } = task;
+  // console.log("task", date);
   return (
     <div className="border-b-2 border-dashed border-slate-200 dark:border-slate-700/[.3] ">
       <div className="flex items-center justify-between ">
-        <p className="font-Rubik text-slate-500 dark:text-slate-300">Subject</p>
+        <p className="font-Rubik text-slate-500 dark:text-slate-300">{title}</p>
         <time className="flex items-center gap-2 text-slate-500 transition-none duration-0 dark:text-slate-300">
-          14/02/1402
+          {date}
           <BsCalendar2Week />
         </time>
       </div>
@@ -15,9 +17,7 @@ export default function TaskInfo({ isListInView }) {
           isListInView ? "line-clamp-2" : "line-clamp-7"
         }`}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dolorem doloremque, deleniti
-        amet velit exercitationem? Accusamus, optio. Neque velit exercitationem? Accusamus, optio.
-        Neque velit exercitationem? Accusamus, optio. Neque
+        {description}
       </p>
     </div>
   );

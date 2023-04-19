@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import LayoutPages from "../Layout/Pages/LayoutPages";
+import { TaskContext } from "../../State/taskReducer";
 
 export default function TaskAll() {
-  return <div>TaskAll</div>;
+  const { state, dispatch } = useContext(TaskContext);
+
+  // console.log("tasks state ", state);
+
+  return <LayoutPages title="All Task" tasks={state} />;
 }

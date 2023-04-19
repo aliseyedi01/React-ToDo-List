@@ -1,5 +1,5 @@
-import React from "react";
+import LayoutPages from "../Layout/Pages/LayoutPages";
 
 export default function TaskSearch() {
-  return <div>TaskSearch</div>;
+  return <LayoutPages title="Search Task" />;
 }

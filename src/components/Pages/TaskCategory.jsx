@@ -1,5 +1,10 @@
-import React from "react";
+import { useParams } from "react-router-dom";
+import LayoutPages from "../Layout/Pages/LayoutPages";
 
 export default function TaskCategory() {
-  return <div>TaskCategory</div>;
+  const params = useParams();
+
+  console.log(params);
+
+  return <LayoutPages title={`${params}`} />;
 }

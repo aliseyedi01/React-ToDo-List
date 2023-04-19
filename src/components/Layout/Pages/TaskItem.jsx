@@ -2,7 +2,7 @@ import React from "react";
 import TaskInfo from "./TaskInfo";
 import TaskAction from "./TaskAction";
 
-export default function TaskItem({ isListInView }) {
+export default function TaskItem({ isListInView, task }) {
   return (
     <>
       <li
@@ -10,7 +10,7 @@ export default function TaskItem({ isListInView }) {
           isListInView ? " flex-col sm:h-32" : "h-60 flex-col sm:h-64"
         }`}
       >
-        <TaskInfo isListInView={isListInView} />
+        <TaskInfo isListInView={isListInView} task={task} />
         <TaskAction />
       </li>
     </>

@@ -8,7 +8,7 @@ import { NavLink, useLocation } from "react-router-dom";
 const Items = [
   {
     name: "All",
-    path: "/",
+    path: "/all",
     icon: <BsListTask />,
   },
   {

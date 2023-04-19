@@ -1,5 +1,5 @@
 import LayoutPages from "../Layout/Pages/LayoutPages";
 
 export default function TaskDone() {
-  return <LayoutPages title="Done Task" />;
+  return <LayoutPages title="ToDo Task" />;
 }
