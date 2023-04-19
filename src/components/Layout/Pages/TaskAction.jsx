@@ -1,12 +1,7 @@
-import { FiEdit } from "react-icons/fi";
-import { useState } from "react";
-import ModalEdit from "../../modal/ModalEdit";
 import { DeleteButton, DoneButton, ImportButton } from "../../Utilities";
+import EditButton from "../../Utilities/EditButton";
 
 export default function TaskAction({ task }) {
-  // const [showModalConfirm, setShowModalConfirm] = useState(false);
-  const [showModalEdit, setShowModalEdit] = useState(false);
-
   return (
     <div className="flex items-center justify-between pt-1">
       {/* category */}
@@ -16,35 +11,13 @@ export default function TaskAction({ task }) {
 
       {/* button action */}
       <div className="flex items-center gap-1 text-2xl text-Light_OnSurface dark:text-Dark_OnSurface ">
-        {/* Done */}
         <DoneButton task={task} />
 
-        {/* Important */}
         <ImportButton task={task} />
-
-        {/* Delete */}
 
         <DeleteButton task={task} />
 
-        {/* Edit */}
-
-        {showModalEdit && (
-          <ModalEdit
-            text="This task Edit"
-            onClose={() => {
-              setShowModalEdit(false);
-            }}
-          />
-        )}
-
-        <button
-          title="Edit"
-          onClick={() => {
-            setShowModalEdit(true);
-          }}
-        >
-          <FiEdit />
-        </button>
+        <EditButton task={task} />
       </div>
     </div>
   );
