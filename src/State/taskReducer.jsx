@@ -54,6 +54,8 @@ function reducer(state = initialState, action) {
       return state.map((task) => (task.id === action.id ? { ...task, important: true } : task));
     case "UnImportant_TASK":
       return state.map((task) => (task.id === action.id ? { ...task, important: false } : task));
+    case "Delete_TASK":
+      return state.filter((task) => task.id !== action.id);
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }

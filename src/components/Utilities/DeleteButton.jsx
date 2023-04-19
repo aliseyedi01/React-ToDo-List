@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import ModalConfirm from "../../components/modal/ModalConfirm";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
-export default function DeleteButton() {
+export default function DeleteButton({ task }) {
   const [showModalConfirm, setShowModalConfirm] = useState(false);
 
   return (
     <>
       {showModalConfirm && (
         <ModalConfirm
-          text="This task is permanently deleted"
+          task={task}
+          text="is permanently deleted"
           onClose={() => {
             setShowModalConfirm(false);
           }}

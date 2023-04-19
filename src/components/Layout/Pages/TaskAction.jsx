@@ -24,7 +24,7 @@ export default function TaskAction({ task }) {
 
         {/* Delete */}
 
-        <DeleteButton />
+        <DeleteButton task={task} />
 
         {/* Edit */}
 
