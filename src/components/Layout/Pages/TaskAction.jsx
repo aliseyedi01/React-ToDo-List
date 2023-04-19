@@ -5,7 +5,7 @@ import ModalConfirm from "../../modal/ModalConfirm";
 import ModalEdit from "../../modal/ModalEdit";
 import { DoneButton, ImportButton } from "../../Utilities";
 
-export default function TaskAction() {
+export default function TaskAction({ task }) {
   const [showModalConfirm, setShowModalConfirm] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
 
@@ -15,10 +15,11 @@ export default function TaskAction() {
       <button className="rounded-md bg-Light_Secondary px-3 py-1  dark:bg-Dark_Secondary">
         <span className="text-Light_OnSecondary dark:text-Light_OnSecondary ">Home</span>
       </button>
+
       {/* button action */}
       <div className="flex items-center gap-1 text-2xl text-Light_OnSurface dark:text-Dark_OnSurface ">
         {/* Done */}
-        <DoneButton />
+        <DoneButton task={task} />
 
         {/* Important */}
         <ImportButton />

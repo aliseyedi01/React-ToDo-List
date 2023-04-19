@@ -11,7 +11,7 @@ export default function TaskItem({ isListInView, task }) {
         }`}
       >
         <TaskInfo isListInView={isListInView} task={task} />
-        <TaskAction />
+        <TaskAction task={task} />
       </li>
     </>
   );

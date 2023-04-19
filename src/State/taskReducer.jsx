@@ -46,10 +46,10 @@ const TaskContext = createContext();
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case "OPEN_MENU":
-      return { isOpenMenu: true };
-    case "CLOSE_MENU":
-      return { isOpenMenu: false };
+    case "DONE_TASK":
+      return state.map((task) => (task.id === action.id ? { ...task, completed: true } : task));
+    case "UNDO_TASK":
+      return state.map((task) => (task.id === action.id ? { ...task, completed: false } : task));
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
