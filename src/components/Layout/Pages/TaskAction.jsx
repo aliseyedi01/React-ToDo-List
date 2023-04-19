@@ -22,7 +22,7 @@ export default function TaskAction({ task }) {
         <DoneButton task={task} />
 
         {/* Important */}
-        <ImportButton />
+        <ImportButton task={task} />
 
         {/* Delete */}
 
