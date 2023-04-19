@@ -1,12 +1,10 @@
-import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
-import ModalConfirm from "../../modal/ModalConfirm";
 import ModalEdit from "../../modal/ModalEdit";
-import { DoneButton, ImportButton } from "../../Utilities";
+import { DeleteButton, DoneButton, ImportButton } from "../../Utilities";
 
 export default function TaskAction({ task }) {
-  const [showModalConfirm, setShowModalConfirm] = useState(false);
+  // const [showModalConfirm, setShowModalConfirm] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
 
   return (
@@ -26,23 +24,7 @@ export default function TaskAction({ task }) {
 
         {/* Delete */}
 
-        {showModalConfirm && (
-          <ModalConfirm
-            text="This task is permanently deleted"
-            onClose={() => {
-              setShowModalConfirm(false);
-            }}
-          />
-        )}
-
-        <button
-          title="Delete"
-          onClick={() => {
-            setShowModalConfirm(true);
-          }}
-        >
-          <RiDeleteBin5Fill />
-        </button>
+        <DeleteButton />
 
         {/* Edit */}
 
