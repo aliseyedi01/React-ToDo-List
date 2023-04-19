@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskItem from "./TaskItem";
 
 export default function TaskDisplay({ isListInView }) {
-  console.log(isListInView);
+  // console.log(isListInView);
 
   return (
     <div className="hide-scrollbar h-full overflow-y-scroll ">
