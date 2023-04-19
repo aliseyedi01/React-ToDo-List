@@ -5,7 +5,7 @@ import TaskDisplay from "./TaskDisplay";
 export default function LayoutPages({ title, tasks }) {
   const [isListInView, setIsListInView] = useState(true);
 
-  console.log("tasks state ", tasks);
+  // console.log("tasks state ", tasks);
 
   return (
     <div className="h-full overflow-y-hidden px-5 pt-2 md:p-10">

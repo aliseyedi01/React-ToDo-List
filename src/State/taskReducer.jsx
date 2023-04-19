@@ -12,7 +12,8 @@ const initialState = [
   },
   {
     title: "Task 2",
-    description: "This is the description for this task 2",
+    description:
+      "This is the description for this task 2 This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2",
     important: false,
     date: "2021-06-20",
     category: "Main",
@@ -21,12 +22,23 @@ const initialState = [
   },
   {
     title: "Task 3",
-    description: "This is the description for this task 3",
+    description:
+      "This is the description for this task 3 This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3",
     important: true,
     date: "2018-10-05",
     category: "Main",
     completed: false,
     id: "t3",
+  },
+  {
+    title: "Task 4",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem lorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip lorem",
+    important: true,
+    date: "2023-04-19",
+    category: "Main",
+    completed: false,
+    id: "t4",
   },
 ];
 

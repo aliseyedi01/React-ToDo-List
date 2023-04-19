@@ -3,7 +3,7 @@ import TaskItem from "./TaskItem";
 
 export default function TaskDisplay({ isListInView, tasks }) {
   // console.log(isListInView);
-  console.log(tasks);
+  // console.log(tasks);
 
   return (
     <div className="hide-scrollbar h-full overflow-y-scroll ">
@@ -12,7 +12,7 @@ export default function TaskDisplay({ isListInView, tasks }) {
           isListInView ? "grid-cols-1" : " md:grid-cols-2 lg:grid-cols-3 "
         }`}
       >
-        {tasks.map((task) => (
+        {tasks?.map((task) => (
           <TaskItem key={task.id} isListInView={isListInView} task={task} />
         ))}
 
