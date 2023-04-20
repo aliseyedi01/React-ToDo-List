@@ -43,6 +43,8 @@ const initialState = [
 ];
 const TaskContext = createContext();
 
+console.log("all task", initialState);
+
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "DONE_TASK":
@@ -55,6 +57,9 @@ function reducer(state = initialState, action) {
       return state.map((task) => (task.id === action.id ? { ...task, important: false } : task));
     case "Delete_TASK":
       return state.filter((task) => task.id !== action.id);
+    case "ADD_NEW_TASK":
+      return [...state, action.task];
+
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
