@@ -10,6 +10,10 @@ function reducer(state = initialState, action) {
       return [...state, action.newCategory];
     case "REMOVE_CATEGORY":
       return state.filter((category) => category !== action.payload);
+    case "EDIT_CATEGORY":
+      return state.map((category) =>
+        category === action.oldCategory ? action.newCategory : category,
+      );
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }

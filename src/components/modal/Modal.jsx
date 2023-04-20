@@ -22,7 +22,7 @@ export default function Modal({ children, title, onClose }) {
 
   return (
     <div
-      className=" fixed inset-0 z-40 grid h-full w-full place-items-center bg-slate-600/[0.5] text-xs  text-slate-600 backdrop-blur-sm  dark:text-slate-300 sm:text-sm xl:text-base"
+      className=" fixed inset-0 z-40 grid h-full w-full place-items-center bg-slate-600/[0.5] text-xs text-slate-600  backdrop-blur-sm   dark:text-slate-300 sm:text-sm xl:text-base"
       onClick={onCloseHandler}
     >
       <section

@@ -3,33 +3,32 @@ import Modal from "./Modal";
 import { ButtonModal, InputModal, LabelModal } from "../customs/@core";
 import { CategoryContext } from "../../State/categoryReducer";
 
-export default function ModalCategory({ onClose, title, textButton }) {
-  const [newCategory, setNewCategory] = useState("");
+export default function ModalEditCategory({ onClose, title, textButton, EditCategory }) {
+  const [newCategory, setNewCategory] = useState(EditCategory);
   const { dispatch } = useContext(CategoryContext);
 
-  const NewCategory = (e) => {
+  const handleEditCategory = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD_CATEGORY", newCategory: newCategory });
+    dispatch({ type: "EDIT_CATEGORY", oldCategory: EditCategory, newCategory: newCategory });
     onClose();
   };
 
-  // console.log(newCategory);
-
   return (
     <Modal onClose={onClose} title={title}>
-      <form onSubmit={NewCategory}>
+      <form>
         <div className="flex flex-col">
           <LabelModal htmlFor="category">Title Category</LabelModal>
           <InputModal
             type="text"
             id="category"
+            value={newCategory}
             placeholder="Enter New Category"
             onChange={(e) => {
               setNewCategory(e.target.value);
             }}
           />
         </div>
-        <ButtonModal>{textButton}</ButtonModal>
+        <ButtonModal onClick={handleEditCategory}>{textButton}</ButtonModal>
       </form>
     </Modal>
   );
