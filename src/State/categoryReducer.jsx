@@ -7,7 +7,7 @@ const CategoryContext = createContext();
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_CATEGORY":
-      return [...state, action.payload];
+      return [...state, action.newCategory];
     case "REMOVE_CATEGORY":
       return state.filter((category) => category !== action.payload);
     default:
