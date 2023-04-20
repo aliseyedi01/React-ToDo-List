@@ -25,7 +25,7 @@ export default function TaskSection() {
         <Route path="/important" element={<TaskImportant />} />
         <Route path="/done" element={<TaskDone />} />
         <Route path="/todo" element={<TaskToDo />} />
-        <Route path="/category" element={<TaskCategory />} />
+        <Route path="/categories/:ctg" element={<TaskCategory />} />
       </Routes>
     </main>
   );

@@ -80,10 +80,9 @@ export default function ModalNew({ onClose, text }) {
               setSelectCategory(e.target.value);
             }}
           >
-            <option>Home</option>
-            <option>School</option>
-            <option>Sport</option>
-            <option>Programming</option>
+            <option>home</option>
+            <option>work</option>
+            <option>school</option>
           </Select>
         </LabelModal>
 
