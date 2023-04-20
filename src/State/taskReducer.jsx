@@ -41,7 +41,6 @@ const initialState = [
     id: "t4",
   },
 ];
-
 const TaskContext = createContext();
 
 function reducer(state = initialState, action) {

@@ -3,6 +3,7 @@ import { RiCloseCircleFill } from "react-icons/ri";
 
 export default function Modal({ children, title, onClose }) {
   const [closing, setClosing] = useState(false);
+  console.log(onClose);
 
   const onCloseHandler = (event) => {
     if (event.target === event.currentTarget) {

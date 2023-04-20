@@ -5,9 +5,9 @@ import BtnWarning from "../customs/@core/BtnWarning";
 import { Button, InputModal, LabelModal, Select, TextArea } from "../customs/@core";
 import { CheckButton, DoneButton, ImportButton } from "../Utilities";
 
-export default function ModalEdit({ onClose, text }) {
+export default function ModalNew({ onClose, text }) {
   return (
-    <Modal onClose={onClose} title="Edit Task">
+    <Modal onClose={onClose} title={text}>
       <form className="flex flex-col">
         {/* title */}
         <LabelModal>
@@ -51,7 +51,7 @@ export default function ModalEdit({ onClose, text }) {
         </div>
 
         {/* Submit */}
-        <BtnInfo className="text-white">Edit Task</BtnInfo>
+        <BtnInfo className="text-white">Add Task</BtnInfo>
       </form>
     </Modal>
   );

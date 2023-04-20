@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TaskItem from "./TaskItem";
+import { NewTaskButton } from "../../Utilities";
 
 export default function TaskDisplay({ isListInView, tasks }) {
   // console.log(isListInView);
@@ -16,13 +17,7 @@ export default function TaskDisplay({ isListInView, tasks }) {
           <TaskItem key={task.id} isListInView={isListInView} task={task} />
         ))}
 
-        <li
-          className={`grid w-full place-content-center rounded-lg border-2 border-dashed border-slate-300 text-slate-400 transition hover:bg-slate-300 hover:text-slate-500 dark:border-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-300 ${
-            isListInView ? "h-20 sm:h-32" : "h-52 sm:h-64"
-          }`}
-        >
-          Add New Task
-        </li>
+        <NewTaskButton isListInView={isListInView} />
       </ul>
     </div>
   );
