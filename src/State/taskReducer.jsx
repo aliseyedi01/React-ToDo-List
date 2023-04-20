@@ -43,7 +43,7 @@ const initialState = [
 ];
 const TaskContext = createContext();
 
-console.log("all task", initialState);
+// console.log("all task", initialState);
 
 function reducer(state = initialState, action) {
   switch (action.type) {
