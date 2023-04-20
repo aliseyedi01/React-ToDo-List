@@ -59,6 +59,8 @@ function reducer(state = initialState, action) {
       return state.filter((task) => task.id !== action.id);
     case "ADD_NEW_TASK":
       return [...state, action.task];
+    case "EDIT_TASK":
+      return state.map((task) => (task.id === action.id ? { ...task, ...action.task } : task));
 
     default:
       throw new Error(`Unknown action type: ${action.type}`);

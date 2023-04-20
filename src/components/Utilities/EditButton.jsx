@@ -9,6 +9,7 @@ export default function EditButton({ task }) {
     <>
       {showModalEdit && (
         <ModalEdit
+          task={task}
           text="This task Edit"
           onClose={() => {
             setShowModalEdit(false);

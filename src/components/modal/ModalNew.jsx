@@ -45,7 +45,6 @@ export default function ModalNew({ onClose, text }) {
             type="text"
             className=" w-full"
             onChange={(e) => {
-              //   console.log(e.target.value);
               setTitle(e.target.value);
             }}
           />
