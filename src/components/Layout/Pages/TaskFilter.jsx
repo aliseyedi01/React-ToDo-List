@@ -28,12 +28,12 @@ export default function TaskFilter() {
         <FaFilter /> <span className=" font-Rubik text-gray-800 ">Filter :</span> {sortName}
       </button>
       <ul
-        className={`absolute left-3 top-9 list-inside list-disc rounded-md bg-slate-400/[.3] py-1 pl-3  pr-10 font-DynaPuff text-sm text-slate-800 backdrop-blur-sm ${
+        className={`absolute left-3 top-9 list-inside list-disc rounded-md bg-slate-400/[.3] py-1 pl-3  pr-10 font-DynaPuff text-sm text-slate-800 backdrop-blur-sm dark:text-gray-300  ${
           isFilterOpen ? "visible" : "hidden"
         }`}
       >
         <li
-          className="cursor-pointer  hover:text-slate-100 "
+          className="cursor-pointer  hover:text-red-700 dark:hover:text-yellow-300 "
           onClick={(e) => {
             setSortName(e.target.innerText);
             dispatch({ type: "NEWEST_TASK" });
@@ -42,7 +42,7 @@ export default function TaskFilter() {
           Newest
         </li>
         <li
-          className="cursor-pointer  hover:text-slate-100 "
+          className="cursor-pointer  hover:text-red-700 dark:hover:text-yellow-300 "
           o
           onClick={(e) => {
             setSortName(e.target.innerText);
@@ -52,7 +52,7 @@ export default function TaskFilter() {
           Oldest
         </li>
         <li
-          className="cursor-pointer  hover:text-slate-100 "
+          className="cursor-pointer  hover:text-red-700 dark:hover:text-yellow-300 "
           onClick={(e) => {
             setSortName(e.target.innerText);
             dispatch({ type: "ORDER_TASK" });
