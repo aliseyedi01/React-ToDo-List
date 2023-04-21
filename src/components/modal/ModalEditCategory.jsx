@@ -5,11 +5,15 @@ import { CategoryContext } from "../../State/categoryReducer";
 
 export default function ModalEditCategory({ onClose, title, textButton, EditCategory }) {
   const [newCategory, setNewCategory] = useState(EditCategory);
-  const { dispatch } = useContext(CategoryContext);
+  const { state: categories, dispatch } = useContext(CategoryContext);
   const editInputRef = useRef(null);
+  const [isDuplicate, setIsDuplicate] = useState(false);
 
   const handleEditCategory = (e) => {
     e.preventDefault();
+    if (isDuplicate) {
+      return;
+    }
     dispatch({ type: "EDIT_CATEGORY", oldCategory: EditCategory, newCategory: newCategory });
     onClose();
   };
@@ -17,6 +21,10 @@ export default function ModalEditCategory({ onClose, title, textButton, EditCate
   useEffect(() => {
     editInputRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    setIsDuplicate(categories.includes(newCategory));
+  }, [newCategory, categories]);
 
   return (
     <Modal onClose={onClose} title={title}>
@@ -34,6 +42,9 @@ export default function ModalEditCategory({ onClose, title, textButton, EditCate
             autoFocus
             ref={editInputRef}
           />
+          {isDuplicate && (
+            <p className="mt-2 text-sm text-red-500">This category already exists.</p>
+          )}
         </div>
         <ButtonModal onClick={handleEditCategory}>{textButton}</ButtonModal>
       </form>
