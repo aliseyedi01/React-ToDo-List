@@ -2,25 +2,16 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { VscBell, VscBellDot } from "react-icons/vsc";
 import { TaskContext } from "../../../State/taskReducer";
 import { NavLink } from "react-router-dom";
+import useHideClickOutside from "../../../hooks/useHideClickOutside";
 export default function Notification() {
   const { state: tasks } = useContext(TaskContext);
   const [importantIncompleteTasks, setImportantIncompleteTasks] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
   const notificationRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (notificationRef.current && !notificationRef.current.contains(event.target))
-        setShowNotification(false);
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  console.log(importantIncompleteTasks);
+  useHideClickOutside(notificationRef, () => {
+    setShowNotification(false);
+  });
 
   const showNotificationHandler = () => {
     setShowNotification((prev) => !prev);
