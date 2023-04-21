@@ -4,6 +4,8 @@ import { AiFillStar } from "react-icons/ai";
 import { MdRemoveDone, MdDoneAll } from "react-icons/md";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { TaskContext } from "../../State/taskReducer";
+import { useContext } from "react";
 
 const Items = [
   {
@@ -37,10 +39,44 @@ export default function TaskItem() {
   const [isTaskOpen, setIsTaskOpen] = useState(false);
   const route = useLocation();
   const currentPath = route.pathname;
+  const { state: tasks } = useContext(TaskContext);
 
   const toggleTaskOpen = () => {
     setIsTaskOpen((prevState) => !prevState);
   };
+
+  const Items = [
+    {
+      name: "All",
+      path: "/all",
+      icon: <BsListTask />,
+      count: tasks.length,
+    },
+    {
+      name: "Today",
+      path: "/today",
+      icon: <IoIosToday />,
+      count: tasks.filter((task) => task.date === new Date().toISOString().slice(0, 10)).length,
+    },
+    {
+      name: "Important",
+      path: "/important",
+      icon: <AiFillStar />,
+      count: tasks.length,
+    },
+    {
+      name: "Done",
+      path: "/Done",
+      icon: <MdDoneAll />,
+      count: tasks.filter((task) => task.completed).length,
+    },
+    {
+      name: "ToDo",
+      path: "/ToDo",
+      icon: <MdRemoveDone />,
+      count: tasks.filter((task) => !task.completed).length,
+    },
+  ];
 
   return (
     <div className=" mt-4 h-max w-full items-start self-start px-3 text-Light_OnSurface transition-none dark:text-Dark_OnSurface">
@@ -59,12 +95,15 @@ export default function TaskItem() {
             <li key={i}>
               <NavLink
                 to={item.path}
-                className={`flex w-full cursor-pointer items-center gap-2 px-4 py-2 text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 ${
+                className={`flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-2 text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 ${
                   currentPath === item.path ? "rounded-lg bg-gray-300 dark:bg-indigo-800" : ""
                 }`}
               >
-                {item.icon}
-                {item.name}
+                <div className="w-fuu flex items-center gap-1">
+                  {item.icon}
+                  {item.name}
+                </div>
+                <div className="text-indigo-500-400 font-Montserrat text-xs">{item.count}</div>
               </NavLink>
             </li>
           ))}
