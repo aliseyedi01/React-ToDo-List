@@ -23,8 +23,8 @@ export default function Notification() {
   }, [tasks]);
 
   return (
-    <div className="relative justify-items-end" ref={notificationRef}>
-      <button className=" cursor-pointer ">
+    <div className="relative mt-2 justify-items-end" ref={notificationRef}>
+      <button className="  cursor-pointer ">
         <VscBell
           className="text-xl text-indigo-800 drop-shadow-2xl dark:text-Dark_OnSurface md:text-2xl"
           onClick={showNotificationHandler}
@@ -32,8 +32,8 @@ export default function Notification() {
       </button>
       {importantIncompleteTasks.length > 0 && (
         <>
-          <div className="dark:bg-yellow-400-600 absolute right-[2px] top-[1px] h-2 w-2 animate-ping rounded-full bg-indigo-900 dark:bg-yellow-400"></div>
-          <div className="absolute right-[2px] top-[1px] h-2 w-2 rounded-full bg-indigo-900 dark:bg-yellow-400"></div>
+          <div className="dark:bg-yellow-400-600 absolute right-[2px] top-[.5px] h-2 w-2 animate-ping rounded-full bg-indigo-900 dark:bg-yellow-400 md:top-[1px]"></div>
+          <div className="absolute right-[2px] top-[.5px] h-2 w-2 rounded-full bg-indigo-900 dark:bg-yellow-400 md:top-[1px]"></div>
         </>
       )}
 
