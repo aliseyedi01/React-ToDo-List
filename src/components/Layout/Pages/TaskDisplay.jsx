@@ -4,7 +4,7 @@ import { NewTaskButton } from "../../Utilities";
 
 export default function TaskDisplay({ isListInView, tasks }) {
   // console.log(isListInView);
-  // console.log(tasks);
+  console.log(tasks);
 
   return (
     <div className="hide-scrollbar h-full overflow-y-scroll ">
@@ -17,7 +17,7 @@ export default function TaskDisplay({ isListInView, tasks }) {
           <TaskItem key={task.id} isListInView={isListInView} task={task} />
         ))}
 
-        <NewTaskButton isListInView={isListInView} />
+        {tasks?.length > 1 && <NewTaskButton isListInView={isListInView} />}
       </ul>
     </div>
   );

@@ -8,7 +8,7 @@ const initialState = [
     date: "2023-04-12",
     category: "house",
     completed: true,
-    id: "t1",
+    id: "t10",
   },
   {
     title: "Task 2",
@@ -18,7 +18,7 @@ const initialState = [
     date: "2021-06-20",
     category: "work",
     completed: false,
-    id: "t2",
+    id: "t20",
   },
   {
     title: "Task 3",
@@ -28,7 +28,7 @@ const initialState = [
     date: "2018-10-05",
     category: "school",
     completed: false,
-    id: "t3",
+    id: "t30",
   },
   {
     title: "Task 4",
@@ -38,7 +38,7 @@ const initialState = [
     date: "2023-04-19",
     category: "work",
     completed: false,
-    id: "t4",
+    id: "t40",
   },
 ];
 const TaskContext = createContext();

@@ -6,6 +6,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsCheckSquareFill } from "react-icons/bs";
 import { TaskContext } from "../../State/taskReducer";
 import { ImCheckboxUnchecked } from "react-icons/im";
+import { NavLink } from "react-router-dom";
 
 export default function ModalSearch({ onClose }) {
   const { state: tasks } = useContext(TaskContext);
@@ -44,25 +45,27 @@ export default function ModalSearch({ onClose }) {
       <div>
         <ul className="hide-scrollbar max-h-40 overflow-y-scroll rounded-sm ">
           {searchResults.map((task) => (
-            <li
-              key={task.id}
-              className="mt-1 flex items-center justify-between rounded-sm bg-indigo-500 p-1  px-1  text-white"
-            >
-              <div>
-                <p className="text-base">{task.title}</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <p className="font-Montserrat text-sm ">{task.date}</p>
+            <NavLink to={`task/${task.id}`}>
+              <li
+                key={task.id}
+                className="mt-1 flex items-center justify-between rounded-sm bg-indigo-500 p-1  px-1  text-white"
+              >
+                <div>
+                  <p className="text-base">{task.title}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <p className="font-Montserrat text-sm ">{task.date}</p>
 
-                {task.important ? (
-                  <AiFillStar className="text-base" />
-                ) : (
-                  <AiOutlineStar className="text-base" />
-                )}
+                  {task.important ? (
+                    <AiFillStar className="text-base" />
+                  ) : (
+                    <AiOutlineStar className="text-base" />
+                  )}
 
-                {task.completed ? <BsCheckSquareFill /> : <ImCheckboxUnchecked />}
-              </div>
-            </li>
+                  {task.completed ? <BsCheckSquareFill /> : <ImCheckboxUnchecked />}
+                </div>
+              </li>
+            </NavLink>
           ))}
         </ul>
       </div>

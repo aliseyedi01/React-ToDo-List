@@ -31,7 +31,7 @@ export default function ModalNew({ onClose, text }) {
       id: Date.now().toString(),
     };
 
-    console.log(newTask);
+    // console.log(newTask);
     dispatch({ type: "ADD_NEW_TASK", task: newTask });
 
     onClose();
