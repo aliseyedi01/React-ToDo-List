@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import { ButtonModal, InputModal, LabelModal } from "../customs/@core";
 import { CategoryContext } from "../../State/categoryReducer";
@@ -6,6 +6,7 @@ import { CategoryContext } from "../../State/categoryReducer";
 export default function ModalCategory({ onClose, title, textButton }) {
   const [newCategory, setNewCategory] = useState("");
   const { dispatch } = useContext(CategoryContext);
+  const searchInputRef = useRef(null);
 
   const NewCategory = (e) => {
     e.preventDefault();
@@ -14,6 +15,9 @@ export default function ModalCategory({ onClose, title, textButton }) {
   };
 
   // console.log(newCategory);
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
 
   return (
     <Modal onClose={onClose} title={title}>
@@ -27,6 +31,8 @@ export default function ModalCategory({ onClose, title, textButton }) {
             onChange={(e) => {
               setNewCategory(e.target.value);
             }}
+            autoFocus
+            ref={searchInputRef}
           />
         </div>
         <ButtonModal>{textButton}</ButtonModal>
