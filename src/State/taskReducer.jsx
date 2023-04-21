@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const initialState = [
   {
@@ -69,6 +69,9 @@ function reducer(state = initialState, action) {
       return oldestTasks.map((task, index) => (index === 0 ? { ...task, ...action.task } : task));
     case "ORDER_TASK":
       const orderedTasks = [...state].sort((a, b) => a.id - b.id);
+    case "SET_TASKS":
+      return action.tasks;
+
       return orderedTasks;
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -76,6 +79,17 @@ function reducer(state = initialState, action) {
 
 function TaskProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (storedTasks) {
+      dispatch({ type: "SET_TASKS", tasks: storedTasks });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(state));
+  }, [state]);
 
   return <TaskContext.Provider value={{ state, dispatch }}>{children}</TaskContext.Provider>;
 }
