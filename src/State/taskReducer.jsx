@@ -8,7 +8,7 @@ const initialState = [
     date: "2023-04-12",
     category: "house",
     completed: false,
-    id: "t10",
+    id: "1676258689",
   },
   {
     title: "Task 2",
@@ -18,7 +18,7 @@ const initialState = [
     date: "2021-06-20",
     category: "work",
     completed: true,
-    id: "t20",
+    id: "1676358689",
   },
   {
     title: "Task 3",
@@ -28,7 +28,7 @@ const initialState = [
     date: "2018-10-05",
     category: "school",
     completed: true,
-    id: "t30",
+    id: "1676458689",
   },
   {
     title: "Task 4",
@@ -38,7 +38,7 @@ const initialState = [
     date: "2023-04-19",
     category: "work",
     completed: true,
-    id: "t40",
+    id: "1676558689",
   },
 ];
 const TaskContext = createContext();
@@ -61,8 +61,15 @@ function reducer(state = initialState, action) {
       return [...state, action.task];
     case "EDIT_TASK":
       return state.map((task) => (task.id === action.id ? { ...task, ...action.task } : task));
-
-    default:
+    case "NEWEST_TASK":
+      const newestTasks = [...state].sort((a, b) => new Date(b.date) - new Date(a.date));
+      return newestTasks.map((task, index) => (index === 0 ? { ...task, ...action.task } : task));
+    case "OLDEST_TASK":
+      const oldestTasks = [...state].sort((a, b) => new Date(a.date) - new Date(b.date));
+      return oldestTasks.map((task, index) => (index === 0 ? { ...task, ...action.task } : task));
+    case "ORDER_TASK":
+      const orderedTasks = [...state].sort((a, b) => a.id - b.id);
+      return orderedTasks;
       throw new Error(`Unknown action type: ${action.type}`);
   }
 }
