@@ -65,9 +65,9 @@ export default function ListCategories({ isCategoryOpen }) {
               } `}
             >
               <div className=" group flex w-full items-center justify-between pr-1">
-                <div className="flex  items-center justify-start gap-1">
+                <div className="flex items-center justify-start gap-1    ">
                   <SiTarget className=" text-sm transition-none duration-0" />
-                  {category}
+                  <p className="w-24 truncate  "> {category}</p>
                 </div>
 
                 <div className="block  group-hover:block md:hidden">
