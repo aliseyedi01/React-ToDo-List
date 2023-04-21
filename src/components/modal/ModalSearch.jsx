@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import { InputModal, LabelModal } from "../customs/@core";
 import { BiSearch } from "react-icons/bi";
@@ -12,6 +12,7 @@ export default function ModalSearch({ onClose }) {
   const { state: tasks } = useContext(TaskContext);
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const searchInputRef = useRef(null);
 
   //   console.log(tasks);
   //   console.log("result", searchResults);
@@ -31,6 +32,10 @@ export default function ModalSearch({ onClose }) {
     setSearchValue(e.target.value);
   };
 
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
+
   return (
     <Modal onClose={onClose} title="Search your Name Task">
       <LabelModal className="relative">
@@ -39,6 +44,8 @@ export default function ModalSearch({ onClose }) {
           placeholder="Search Task ..."
           className=" w-full pl-8"
           onChange={searchTaskHandle}
+          ref={searchInputRef}
+          autoFocus
         />
         <BiSearch className="text-red-00  absolute  left-2 top-4 text-xl " />
       </LabelModal>
