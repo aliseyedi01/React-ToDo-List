@@ -62,7 +62,7 @@ export default function TaskItem() {
       name: "Important",
       path: "/important",
       icon: <AiFillStar />,
-      count: tasks.length,
+      count: tasks.filter((task) => task.important === true).length,
     },
     {
       name: "Done",
@@ -103,8 +103,8 @@ export default function TaskItem() {
                   {item.icon}
                   {item.name}
                 </div>
-                <div className="text-indigo-500-400 translate-x-[5px] font-Montserrat text-xs ">
-                  {item.count}
+                <div className="translate-x-[5px] font-Montserrat text-xs text-indigo-900 ">
+                  {item.count > 0 && item.count}
                 </div>
               </NavLink>
             </li>
