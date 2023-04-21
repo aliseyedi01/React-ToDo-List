@@ -6,18 +6,25 @@ import { SiTarget } from "react-icons/si";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
 import ModalEditCategory from "../../modal/ModalEditCategory";
+import ModalConfirm from "../../modal/ModalConfirm";
 
 export default function ListCategories({ isCategoryOpen }) {
   const { state: categoryState, dispatch: categoryDispatch } = useContext(CategoryContext);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [showModalDelete, setShowModalDelete] = useState(false);
+
+  const handleRemoveCategory = (category) => {
+    setSelectedCategory(category);
+    setShowModalDelete(true);
+  };
 
   const handleEditCategory = (category) => {
     setSelectedCategory(category);
     setShowModalEdit(true);
   };
 
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   const route = useLocation();
   const currentPath = route.pathname;
@@ -41,7 +48,7 @@ export default function ListCategories({ isCategoryOpen }) {
                   {category}
                 </div>
 
-                {selectedCategory && (
+                {selectedCategory && showModalEdit && (
                   <ModalEditCategory
                     title="Edit Category"
                     textButton="Edit"
@@ -53,9 +60,25 @@ export default function ListCategories({ isCategoryOpen }) {
                   />
                 )}
 
+                {showModalDelete && (
+                  <ModalConfirm
+                    type="category"
+                    task={selectedCategory}
+                    text="is permanently deleted"
+                    onClose={() => {
+                      setShowModalDelete(false);
+                    }}
+                  />
+                )}
+
                 <div className="hidden group-hover:block">
                   <div className="flex  items-center gap-1 ">
-                    <RiDeleteBin5Fill className="text-sm md:text-base" />
+                    <RiDeleteBin5Fill
+                      className="text-sm md:text-base"
+                      onClick={() => {
+                        handleRemoveCategory(category);
+                      }}
+                    />
                     <FiEdit
                       className="text-sm md:text-base"
                       onClick={() => {

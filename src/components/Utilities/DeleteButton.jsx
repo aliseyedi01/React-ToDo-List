@@ -9,6 +9,7 @@ export default function DeleteButton({ task }) {
     <>
       {showModalConfirm && (
         <ModalConfirm
+          type="task"
           task={task}
           text="is permanently deleted"
           onClose={() => {

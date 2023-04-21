@@ -9,7 +9,7 @@ function reducer(state = initialState, action) {
     case "ADD_CATEGORY":
       return [...state, action.newCategory];
     case "REMOVE_CATEGORY":
-      return state.filter((category) => category !== action.payload);
+      return state.filter((category) => category !== action.DeleteCategory);
     case "EDIT_CATEGORY":
       return state.map((category) =>
         category === action.oldCategory ? action.newCategory : category,
