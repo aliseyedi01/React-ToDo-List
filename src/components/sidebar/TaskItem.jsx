@@ -81,7 +81,7 @@ export default function TaskItem() {
   return (
     <div className=" mt-4 h-max w-full items-start self-start px-3 text-Light_OnSurface transition-none dark:text-Dark_OnSurface">
       <button
-        className=" flex w-full items-center justify-between font-Montserrat"
+        className=" flex w-full items-center justify-between font-Montserrat text-base md:text-lg"
         onClick={toggleTaskOpen}
       >
         Task
@@ -95,7 +95,7 @@ export default function TaskItem() {
             <li key={i}>
               <NavLink
                 to={item.path}
-                className={`flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-2 text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 ${
+                className={`flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-2 text-sm text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 md:text-base ${
                   currentPath === item.path ? "rounded-lg bg-gray-300 dark:bg-indigo-800" : ""
                 }`}
               >
@@ -103,7 +103,9 @@ export default function TaskItem() {
                   {item.icon}
                   {item.name}
                 </div>
-                <div className="text-indigo-500-400 font-Montserrat text-xs">{item.count}</div>
+                <div className="text-indigo-500-400 translate-x-[5px] font-Montserrat text-xs ">
+                  {item.count}
+                </div>
               </NavLink>
             </li>
           ))}

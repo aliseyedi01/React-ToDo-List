@@ -10,9 +10,9 @@ export default function Categories() {
   };
 
   return (
-    <div className="mt-2 w-full px-3 text-Light_OnSurface transition-none dark:text-Dark_OnSurface ">
+    <div className="mt-2 w-full  px-3 text-Light_OnSurface transition-none dark:text-Dark_OnSurface ">
       <button
-        className=" flex w-full items-center justify-between   font-Montserrat"
+        className=" flex w-full items-center justify-between  font-Montserrat text-base  md:text-lg"
         onClick={toggleCategoryOpen}
       >
         Category

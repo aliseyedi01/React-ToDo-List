@@ -31,12 +31,12 @@ export default function ListCategories({ isCategoryOpen }) {
 
   return (
     <div className={!isCategoryOpen ? "visible" : "hidden"}>
-      <ul className="pt-1 transition-none duration-0">
+      <ul className=" hide-scrollbar  max-h-52 overflow-y-scroll  pt-1  transition-none duration-0">
         {categoryState.map((category, i) => (
           <li key={i}>
             <NavLink
               to={`/categories/${category}`}
-              className={`flex cursor-pointer items-center gap-2 py-2 pl-4 capitalize transition-none duration-0 hover:text-rose-600 dark:hover:text-slate-100 ${
+              className={`flex cursor-pointer items-center gap-2  py-2 pl-4 text-sm capitalize transition-none duration-0 hover:text-rose-600 dark:hover:text-slate-100 md:text-base ${
                 currentPath === `/categories/${category}`
                   ? "rounded-lg bg-gray-300 dark:bg-indigo-800"
                   : ""
@@ -71,7 +71,7 @@ export default function ListCategories({ isCategoryOpen }) {
                   />
                 )}
 
-                <div className="hidden group-hover:block">
+                <div className="block  group-hover:block md:hidden">
                   <div className="flex  items-center gap-1 ">
                     <RiDeleteBin5Fill
                       className="text-sm md:text-base"
