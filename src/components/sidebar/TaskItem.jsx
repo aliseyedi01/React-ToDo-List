@@ -95,15 +95,15 @@ export default function TaskItem() {
             <li key={i}>
               <NavLink
                 to={item.path}
-                className={`flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-2 text-sm text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 md:text-base ${
-                  currentPath === item.path ? "rounded-lg bg-gray-300 dark:bg-indigo-800" : ""
+                className={`flex w-full cursor-pointer items-center justify-between gap-2  px-4 py-2 text-sm text-Light_OnSurface transition-none hover:text-rose-600 dark:text-Dark_OnSurface dark:hover:text-slate-100 md:text-base ${
+                  currentPath === item.path ? " rounded-lg bg-gray-300 dark:bg-indigo-800" : ""
                 }`}
               >
                 <div className="w-fuu flex items-center gap-1">
                   {item.icon}
                   {item.name}
                 </div>
-                <div className="translate-x-[5px] font-Montserrat text-xs text-indigo-900 ">
+                <div className="translate-x-[5px] font-Montserrat text-xs text-indigo-900 dark:text-sky-500 ">
                   {item.count > 0 && item.count}
                 </div>
               </NavLink>
