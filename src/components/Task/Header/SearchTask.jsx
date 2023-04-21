@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputModal } from "../../customs/@core";
 import { BiSearch } from "react-icons/bi";
 import ModalSearch from "../../modal/ModalSearch";
 
 export default function SearchTask() {
   const [showModalSearch, setShowModalSearch] = useState(false);
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.ctrlKey && event.key === "k") {
+        event.preventDefault();
+        setShowModalSearch(true);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <>
