@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import { ButtonModal, InputModal, LabelModal } from "../customs/@core";
 import { CategoryContext } from "../../State/categoryReducer";
@@ -6,12 +6,17 @@ import { CategoryContext } from "../../State/categoryReducer";
 export default function ModalEditCategory({ onClose, title, textButton, EditCategory }) {
   const [newCategory, setNewCategory] = useState(EditCategory);
   const { dispatch } = useContext(CategoryContext);
+  const editInputRef = useRef(null);
 
   const handleEditCategory = (e) => {
     e.preventDefault();
     dispatch({ type: "EDIT_CATEGORY", oldCategory: EditCategory, newCategory: newCategory });
     onClose();
   };
+
+  useEffect(() => {
+    editInputRef.current.focus();
+  }, []);
 
   return (
     <Modal onClose={onClose} title={title}>
@@ -26,6 +31,8 @@ export default function ModalEditCategory({ onClose, title, textButton, EditCate
             onChange={(e) => {
               setNewCategory(e.target.value);
             }}
+            autoFocus
+            ref={editInputRef}
           />
         </div>
         <ButtonModal onClick={handleEditCategory}>{textButton}</ButtonModal>
