@@ -5,9 +5,11 @@ import BtnWarning from "../customs/@core/BtnWarning";
 import { Button, InputModal, LabelModal, Select, TextArea } from "../customs/@core";
 import { CheckButton, DoneButton, ImportButton } from "../Utilities";
 import { TaskContext } from "../../State/taskReducer";
+import { CategoryContext } from "../../State/categoryReducer";
 
 export default function ModalEdit({ onClose, text, task }) {
   const { dispatch } = useContext(TaskContext);
+  const { state: categories } = useContext(CategoryContext);
 
   const [title, setTitle] = useState(task.title);
   const [date, setDate] = useState(task.date);
@@ -84,9 +86,9 @@ export default function ModalEdit({ onClose, text, task }) {
               setSelectCategory(e.target.value);
             }}
           >
-            <option>home</option>
-            <option>work</option>
-            <option>school</option>
+            {categories.map((category) => (
+              <option>{category}</option>
+            ))}
           </Select>
         </LabelModal>
 
