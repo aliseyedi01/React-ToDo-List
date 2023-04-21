@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 const initialState = ["house", "work", "school"];
 
@@ -14,6 +14,8 @@ function reducer(state = initialState, action) {
       return state.map((category) =>
         category === action.oldCategory ? action.newCategory : category,
       );
+    case "SET_CATEGORIES":
+      return action.categories;
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
@@ -21,6 +23,17 @@ function reducer(state = initialState, action) {
 
 function CategoryProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const storedCategories = JSON.parse(localStorage.getItem("categories"));
+    if (storedCategories) {
+      dispatch({ type: "SET_CATEGORIES", categories: storedCategories });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("categories", JSON.stringify(state));
+  }, [state]);
 
   return (
     <CategoryContext.Provider value={{ state, dispatch }}>{children}</CategoryContext.Provider>
