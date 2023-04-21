@@ -9,6 +9,8 @@ export default function ModalConfirm({ onClose, text, task, type }) {
   const { dispatch } = useContext(TaskContext);
   const { dispatch: categoryDispatch } = useContext(CategoryContext);
 
+  console.log("task", task);
+
   function handleDelete() {
     if (type === task) {
       dispatch({ type: "Delete_TASK", id: task.id });

@@ -15,6 +15,7 @@ export default function ListCategories({ isCategoryOpen }) {
   const [showModalDelete, setShowModalDelete] = useState(false);
 
   const handleRemoveCategory = (category) => {
+    console.log("category", category);
     setSelectedCategory(category);
     setShowModalDelete(true);
   };
@@ -24,14 +25,35 @@ export default function ListCategories({ isCategoryOpen }) {
     setShowModalEdit(true);
   };
 
-  // console.log(selectedCategory);
-
   const route = useLocation();
   const currentPath = route.pathname;
 
   return (
     <div className={!isCategoryOpen ? "visible" : "hidden"}>
       <ul className=" hide-scrollbar  max-h-52 overflow-y-scroll  pt-1  transition-none duration-0">
+        {showModalDelete && (
+          <ModalConfirm
+            type="category"
+            task={selectedCategory}
+            text="is permanently deleted"
+            onClose={() => {
+              setShowModalDelete(false);
+            }}
+          />
+        )}
+
+        {selectedCategory && showModalEdit && (
+          <ModalEditCategory
+            title="Edit Category"
+            textButton="Edit"
+            EditCategory={selectedCategory}
+            onClose={() => {
+              setSelectedCategory(null);
+              setShowModalEdit(false);
+            }}
+          />
+        )}
+
         {categoryState.map((category, i) => (
           <li key={i}>
             <NavLink
@@ -47,29 +69,6 @@ export default function ListCategories({ isCategoryOpen }) {
                   <SiTarget className=" text-sm transition-none duration-0" />
                   {category}
                 </div>
-
-                {selectedCategory && showModalEdit && (
-                  <ModalEditCategory
-                    title="Edit Category"
-                    textButton="Edit"
-                    EditCategory={selectedCategory}
-                    onClose={() => {
-                      setSelectedCategory(null);
-                      setShowModalEdit(false);
-                    }}
-                  />
-                )}
-
-                {showModalDelete && (
-                  <ModalConfirm
-                    type="category"
-                    task={selectedCategory}
-                    text="is permanently deleted"
-                    onClose={() => {
-                      setShowModalDelete(false);
-                    }}
-                  />
-                )}
 
                 <div className="block  group-hover:block md:hidden">
                   <div className="flex  items-center gap-1 ">
