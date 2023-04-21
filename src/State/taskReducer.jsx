@@ -7,7 +7,7 @@ const initialState = [
     important: false,
     date: "2023-04-12",
     category: "house",
-    completed: true,
+    completed: false,
     id: "t10",
   },
   {
@@ -17,27 +17,27 @@ const initialState = [
     important: false,
     date: "2021-06-20",
     category: "work",
-    completed: false,
+    completed: true,
     id: "t20",
   },
   {
     title: "Task 3",
     description:
       "This is the description for this task 3 This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3",
-    important: true,
+    important: false,
     date: "2018-10-05",
     category: "school",
-    completed: false,
+    completed: true,
     id: "t30",
   },
   {
     title: "Task 4",
     description:
       "lorem ipsum dolor sit amet, consectetur adip lorem lorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip lorem",
-    important: true,
+    important: false,
     date: "2023-04-19",
     category: "work",
-    completed: false,
+    completed: true,
     id: "t40",
   },
 ];
