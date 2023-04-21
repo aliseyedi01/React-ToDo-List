@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import BtnInfo from "../customs/@core/BtnInfo";
 import BtnWarning from "../customs/@core/BtnWarning";
@@ -10,6 +10,7 @@ import { CategoryContext } from "../../State/categoryReducer";
 export default function ModalEdit({ onClose, text, task }) {
   const { dispatch } = useContext(TaskContext);
   const { state: categories } = useContext(CategoryContext);
+  const titleInputRef = useRef(null);
 
   const [title, setTitle] = useState(task.title);
   const [date, setDate] = useState(task.date);
@@ -37,6 +38,10 @@ export default function ModalEdit({ onClose, text, task }) {
     onClose();
   };
 
+  useEffect(() => {
+    titleInputRef.current.focus();
+  }, []);
+
   return (
     <Modal onClose={onClose} title="Edit Task">
       <form className="flex flex-col" onSubmit={EditTaskHandler}>
@@ -50,6 +55,8 @@ export default function ModalEdit({ onClose, text, task }) {
             onChange={(e) => {
               setTitle(e.target.value);
             }}
+            autoFocus
+            ref={titleInputRef}
           />
         </LabelModal>
 
