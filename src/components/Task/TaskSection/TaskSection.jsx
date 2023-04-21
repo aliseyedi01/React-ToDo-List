@@ -8,9 +8,9 @@ import {
   TaskDone,
   TaskToDo,
   TaskImportant,
-  TaskSearch,
   TaskToday,
   TaskAll,
+  TaskSingle,
 } from "../../Pages";
 
 export default function TaskSection() {
@@ -20,12 +20,12 @@ export default function TaskSection() {
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="/all" element={<TaskAll />} />
-        <Route path="/result" element={<TaskSearch />} />
         <Route path="/today" element={<TaskToday />} />
         <Route path="/important" element={<TaskImportant />} />
         <Route path="/done" element={<TaskDone />} />
         <Route path="/todo" element={<TaskToDo />} />
         <Route path="/categories/:ctg" element={<TaskCategory />} />
+        <Route path="/task/:taskId" element={<TaskSingle />} />
       </Routes>
     </main>
   );
