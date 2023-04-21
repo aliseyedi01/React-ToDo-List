@@ -32,32 +32,36 @@ export default function TaskSort({ isListInView, setIsListInView }) {
   return (
     <div className="mt-2 flex gap-2 md:mt-0 md:w-max ">
       {/* view button */}
-      <div className="flex h-max items-center rounded-lg bg-white ">
+      <div className="flex h-max items-center rounded-lg bg-slate-300 ">
         <button
-          className={`rounded-lg  px-2 py-1  ${isListInView ? "bg-sky-400" : ""}`}
+          className={`rounded-lg  px-2 py-1  ${
+            isListInView ? "bg-sky-600 dark:bg-indigo-400" : ""
+          }`}
           onClick={() => {
             setIsListInView(true);
           }}
         >
-          <FaThList className="text-base md:text-2xl  " />
+          <FaThList className="text-base text-gray-900 dark:text-blue-800 md:text-xl  " />
         </button>
         <button
-          className={`rounded-lg  px-2 py-1  ${!isListInView ? "bg-sky-400" : ""}`}
+          className={`rounded-lg  px-2 py-1  ${
+            !isListInView ? "bg-sky-600 dark:bg-indigo-400" : ""
+          }`}
           onClick={() => {
             setIsListInView(false);
           }}
         >
-          <BsGridFill className="text-base md:text-2xl " />
+          <BsGridFill className="text-xm text-gray-900 dark:text-blue-800 md:text-xl " />
         </button>
       </div>
 
       {/* filter button */}
       <div ref={filterRef} className="relative   ">
         <button
-          className=" flex  w-[137px] items-center gap-1 rounded-lg bg-white px-1 py-1 font-DynaPuff text-sm md:w-44  md:px-2 md:text-base"
+          className=" flex  w-[137px] items-center gap-1 rounded-lg bg-slate-300 px-1 py-1 font-DynaPuff text-sm md:w-44  md:px-2 md:text-base"
           onClick={toggleFilterOpen}
         >
-          <FaFilter /> <span className=" font-Rubik ">Filter :</span> {sortName}
+          <FaFilter /> <span className=" font-Rubik text-gray-800 ">Filter :</span> {sortName}
         </button>
         <ul
           className={`absolute left-3 top-9 list-inside list-disc rounded-md bg-slate-400 py-1  pl-3 pr-10 font-DynaPuff text-sm text-slate-800 ${
