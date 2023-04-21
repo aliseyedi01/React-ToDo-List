@@ -38,17 +38,17 @@ export default function Notification() {
       )}
 
       {importantIncompleteTasks.length > 0 && showNotification && (
-        <div className="  absolute right-0 top-8  z-20  max-h-24 w-56  rounded-lg bg-gray-500 p-1 dark:bg-Dark_OnSurface ">
-          <p className="font-Rubik text-sm">You Have Important Task :</p>
+        <div className="  absolute right-0 top-8  z-20  max-h-24 w-44 rounded-lg  bg-gray-300 p-1 dark:bg-Dark_OnSurface md:w-56 ">
+          <p className="font-Rubik text-xs md:text-sm ">You Have Important Task :</p>
           <ul className="hide-scrollbar max-h-16 w-full  overflow-y-scroll   ">
             {importantIncompleteTasks.map((task) => (
               <NavLink to={`task/${task.id}`}>
                 <li
-                  className="mt-1 flex w-full justify-between rounded-lg bg-slate-600 px-2 font-Montserrat text-sm text-slate-200"
+                  className="mt-1 flex w-full justify-between rounded-lg bg-slate-500 px-2 font-Montserrat text-sm text-slate-200"
                   key={task.id}
                 >
-                  <p className="w-24 truncate ">{task.title}</p>
-                  <p>{task.date}</p>
+                  <p className="w-14 truncate text-xs md:w-24 md:text-base ">{task.title}</p>
+                  <p className="text-xs md:text-base">{task.date}</p>
                 </li>
               </NavLink>
             ))}
