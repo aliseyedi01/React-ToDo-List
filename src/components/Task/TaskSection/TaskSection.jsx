@@ -18,7 +18,7 @@ export default function TaskSection() {
     <main className=" h-full w-full bg-Light_Background  dark:bg-Dark_Background  md:w-[80%] ">
       <Header />
       <Routes>
-        <Route path="/*" element={<Home />} />
+        <Route path="/*" element={<TaskAll />} />
         <Route path="/all" element={<TaskAll />} />
         <Route path="/today" element={<TaskToday />} />
         <Route path="/important" element={<TaskImportant />} />

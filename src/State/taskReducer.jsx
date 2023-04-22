@@ -2,8 +2,8 @@ import { createContext, useEffect, useReducer } from "react";
 
 const initialState = [
   {
-    title: "Task 1",
-    description: "This is the description for this task 1",
+    title: "Clean house",
+    description: "Vacuum the floors and dust the furniture in the living room and bedrooms.",
     important: false,
     date: "2023-04-12",
     category: "house",
@@ -11,9 +11,9 @@ const initialState = [
     id: "1676258689",
   },
   {
-    title: "Task 2",
+    title: "Finish the report",
     description:
-      "This is the description for this task 2 This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2This is the description for this task 2",
+      "Complete the report for the client meeting. Include the latest sales figures and analysis of the competition.",
     important: false,
     date: "2021-06-20",
     category: "work",
@@ -21,9 +21,8 @@ const initialState = [
     id: "1676358689",
   },
   {
-    title: "Task 3",
-    description:
-      "This is the description for this task 3 This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3This is the description for this task 3",
+    title: "Study for exam",
+    description: "Review chapters 1-3 for the upcoming exam. Focus on key concepts and formulas.",
     important: false,
     date: "2018-10-05",
     category: "school",
@@ -31,9 +30,9 @@ const initialState = [
     id: "1676458689",
   },
   {
-    title: "Task 4",
+    title: "Finish website design",
     description:
-      "lorem ipsum dolor sit amet, consectetur adip lorem lorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip loremlorem ipsum dolor sit amet, consectetur adip lorem",
+      "Complete the website design by the end of the week. Make sure to incorporate the client's branding guidelines and UX best practices.",
     important: false,
     date: "2023-04-19",
     category: "work",
@@ -41,6 +40,7 @@ const initialState = [
     id: "1676558689",
   },
 ];
+
 const TaskContext = createContext();
 
 function reducer(state = initialState, action) {
