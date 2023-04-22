@@ -4,8 +4,6 @@ import ModalCategory from "../../modal/ModalCategory";
 export default function AddCategory() {
   const [modalCategory, setModalCategory] = useState(false);
 
-  // console.log(modalCategory);
-
   const closeModalCategory = () => {
     setModalCategory(false);
   };

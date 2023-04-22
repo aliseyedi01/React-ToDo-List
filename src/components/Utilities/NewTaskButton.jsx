@@ -3,7 +3,6 @@ import ModalNew from "../modal/ModalNew";
 
 export default function NewTaskButton({ isListInView }) {
   const [showModalNew, setShowModalNew] = useState(false);
-  //   console.log(showModalNew);
 
   return (
     <>

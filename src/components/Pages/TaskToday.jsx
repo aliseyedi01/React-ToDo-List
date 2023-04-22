@@ -9,7 +9,6 @@ export default function TaskToday() {
 
   const today = new Date().toISOString().slice(0, 10);
   const tasksToday = tasks.filter((task) => task.date === today);
-  // console.log(tasksToday);
 
   return <LayoutPages title="Today Task" tasks={tasksToday} />;
 }

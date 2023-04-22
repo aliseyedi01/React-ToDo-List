@@ -10,8 +10,6 @@ import { MenuContext } from "../../../State/menuReducer";
 export default function Header() {
   const { state, dispatch } = useContext(MenuContext);
 
-  // console.log("state header ", state.isOpenMenu);
-
   return (
     <header className="flex h-max w-full flex-col-reverse items-center justify-between gap-2  bg-Light_Surface/50 px-3 pb-3 dark:bg-Dark_Surface/95 md:h-16 md:flex-row  md:pb-0">
       <TiThMenu

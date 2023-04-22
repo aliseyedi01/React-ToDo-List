@@ -6,16 +6,12 @@ import { TaskContext } from "../../State/taskReducer";
 export default function DoneButton({ task }) {
   const { dispatch } = useContext(TaskContext);
 
-  // console.log(task.id);
-
   function handleTaskDone(id) {
     dispatch({ type: "DONE_TASK", id: task.id });
-    // console.log(id);
   }
 
   function handleTaskUndo(id) {
     dispatch({ type: "UNDO_TASK", id: task.id });
-    // console.log(id);
   }
 
   return (

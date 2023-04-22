@@ -2,7 +2,6 @@ import { BsCalendar2Week } from "react-icons/bs";
 
 export default function TaskInfo({ isListInView, task }) {
   const { title, date, description } = task;
-  // console.log("task", date);
   return (
     <div className="h-full border-b-2 border-dashed border-slate-200 dark:border-slate-700/[.3] ">
       <div className="flex items-center justify-between ">

@@ -12,7 +12,6 @@ export default function Time() {
     return formattedDate;
   }, []);
 
-  // console.log(currentDate);
   return (
     <div className=" md:-translate-x- left-12 top-3  font-Montserrat font-bold text-Light_OnSurface dark:text-Dark_OnSurface max-md:fixed">
       {currentDate}

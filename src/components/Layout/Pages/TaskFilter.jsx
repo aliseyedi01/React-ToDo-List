@@ -9,8 +9,6 @@ export default function TaskFilter() {
   const filterRef = useRef(null);
   const { state: tasks, dispatch } = useContext(TaskContext);
 
-  console.log(tasks);
-
   useHideClickOutside(filterRef, () => {
     setIsFilterOpen(false);
   });

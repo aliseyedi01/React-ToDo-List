@@ -7,12 +7,10 @@ export default function ImportButton({ task }) {
 
   function handleTaskComplete(id) {
     dispatch({ type: "Important_TASK", id: task.id });
-    // console.log("ali");
   }
 
   function handleTaskUnComplete(id) {
     dispatch({ type: "UnImportant_TASK", id: task.id });
-    // console.log(id);
   }
 
   return (

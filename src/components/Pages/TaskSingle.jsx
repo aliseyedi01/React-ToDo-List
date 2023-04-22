@@ -8,8 +8,6 @@ export default function TaskSingle() {
   const param = useParams();
   const [task, setTask] = useState(null);
 
-  // console.log(task, typeof task);
-
   useEffect(() => {
     setTask([tasks.find((task) => task.id === param.taskId)]);
   }, [param]);

@@ -14,9 +14,6 @@ export default function ModalSearch({ onClose }) {
   const [searchResults, setSearchResults] = useState([]);
   const searchInputRef = useRef(null);
 
-  //   console.log(tasks);
-  //   console.log("result", searchResults);
-
   useEffect(() => {
     if (searchValue === "") {
       setSearchResults([]);

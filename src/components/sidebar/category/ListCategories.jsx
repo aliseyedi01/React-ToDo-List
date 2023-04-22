@@ -15,7 +15,6 @@ export default function ListCategories({ isCategoryOpen }) {
   const [showModalDelete, setShowModalDelete] = useState(false);
 
   const handleRemoveCategory = (category) => {
-    console.log("category", category);
     setSelectedCategory(category);
     setShowModalDelete(true);
   };

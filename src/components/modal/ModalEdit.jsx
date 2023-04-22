@@ -32,7 +32,6 @@ export default function ModalEdit({ onClose, text, task }) {
       id: task.id,
     };
 
-    console.log(updatedTask);
     dispatch({ type: "EDIT_TASK", task: updatedTask, id: task.id });
 
     onClose();
