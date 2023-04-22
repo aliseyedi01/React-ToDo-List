@@ -67,6 +67,7 @@ function reducer(state = initialState, action) {
       return oldestTasks.map((task, index) => (index === 0 ? { ...task, ...action.task } : task));
     case "ORDER_TASK":
       const orderedTasks = [...state].sort((a, b) => a.id - b.id);
+      return orderedTasks;
     case "SET_TASKS":
       return action.tasks;
 

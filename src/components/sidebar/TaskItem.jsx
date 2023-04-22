@@ -50,31 +50,31 @@ export default function TaskItem() {
       name: "All",
       path: "/all",
       icon: <BsListTask />,
-      count: tasks.length,
+      count: tasks?.length,
     },
     {
       name: "Today",
       path: "/today",
       icon: <IoIosToday />,
-      count: tasks.filter((task) => task.date === new Date().toISOString().slice(0, 10)).length,
+      count: tasks?.filter((task) => task.date === new Date().toISOString().slice(0, 10)).length,
     },
     {
       name: "Important",
       path: "/important",
       icon: <AiFillStar />,
-      count: tasks.filter((task) => task.important === true).length,
+      count: tasks?.filter((task) => task.important === true).length,
     },
     {
       name: "Done",
       path: "/Done",
       icon: <MdDoneAll />,
-      count: tasks.filter((task) => task.completed).length,
+      count: tasks?.filter((task) => task.completed).length,
     },
     {
       name: "ToDo",
       path: "/ToDo",
       icon: <MdRemoveDone />,
-      count: tasks.filter((task) => !task.completed).length,
+      count: tasks?.filter((task) => !task.completed).length,
     },
   ];
 

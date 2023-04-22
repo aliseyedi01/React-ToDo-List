@@ -18,7 +18,7 @@ export default function Notification() {
   };
 
   useEffect(() => {
-    const filteredTasks = tasks.filter((task) => !task.completed && task.important);
+    const filteredTasks = tasks?.filter((task) => !task.completed && task.important);
     setImportantIncompleteTasks(filteredTasks);
   }, [tasks]);
 
@@ -30,7 +30,7 @@ export default function Notification() {
           onClick={showNotificationHandler}
         />
       </button>
-      {importantIncompleteTasks.length > 0 && (
+      {importantIncompleteTasks?.length > 0 && (
         <>
           <div className="dark:bg-yellow-400-600 absolute right-[2px] top-[.5px] h-2 w-2 animate-ping rounded-full bg-indigo-900 dark:bg-yellow-400 md:top-[1px]"></div>
           <div className="absolute right-[2px] top-[.5px] h-2 w-2 rounded-full bg-indigo-900 dark:bg-yellow-400 md:top-[1px]"></div>
