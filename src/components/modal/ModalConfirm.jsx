@@ -10,7 +10,8 @@ export default function ModalConfirm({ onClose, text, task, type }) {
   const { dispatch: categoryDispatch } = useContext(CategoryContext);
 
   function handleDelete() {
-    if (type === task) {
+    if (type === "task") {
+      console.log("akbar");
       dispatch({ type: "Delete_TASK", id: task.id });
     } else {
       categoryDispatch({ type: "REMOVE_CATEGORY", DeleteCategory: task });
