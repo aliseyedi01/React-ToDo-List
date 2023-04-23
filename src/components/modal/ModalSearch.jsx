@@ -34,7 +34,7 @@ export default function ModalSearch({ onClose }) {
   }, []);
 
   return (
-    <Modal onClose={onClose} title="Search your Name Task">
+    <Modal onClose={onClose} title="Search Task's name">
       <LabelModal className="relative">
         <InputModal
           type="search"

@@ -4,9 +4,9 @@ import { NewTaskButton } from "../../Utilities";
 
 export default function TaskDisplay({ isListInView, tasks }) {
   return (
-    <div className="hide-scrollbar h-full overflow-y-scroll ">
+    <div className="hide-scrollbar h-full  overflow-y-scroll ">
       <ul
-        className={`mt-4 grid gap-4  ${
+        className={`mt-4 grid  gap-4 pb-44 md:pb-20 ${
           isListInView ? "grid-cols-1" : " md:grid-cols-2 lg:grid-cols-3 "
         }`}
       >
@@ -14,7 +14,7 @@ export default function TaskDisplay({ isListInView, tasks }) {
           <TaskItem key={task.id} isListInView={isListInView} task={task} />
         ))}
 
-        {tasks?.length > 1 && <NewTaskButton isListInView={isListInView} />}
+        {<NewTaskButton isListInView={isListInView} />}
       </ul>
     </div>
   );

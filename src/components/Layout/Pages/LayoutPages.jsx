@@ -7,7 +7,7 @@ export default function LayoutPages({ title, tasks }) {
 
   return (
     <div className="h-full overflow-y-hidden px-5 pt-2 md:p-10">
-      <div className="flex flex-row items-center justify-between ">
+      <div className="mb-2 flex  flex-row items-center justify-between ">
         <h1 className="font-Montserrat text-Light_OnSurface dark:text-Dark_OnSurface md:text-xl">
           {title}
         </h1>
