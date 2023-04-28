@@ -5,6 +5,8 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegIdBadge } from "react-icons/fa";
 import useHideClickOutside from "../../../hooks/useHideClickOutside";
 import ModalSignUp from "../../modal/ModalSignUp";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../config/firebase-config";
 
 export default function Accounts() {
   const [isShowAccount, setIsShowAccounts] = useState(false);
@@ -12,6 +14,14 @@ export default function Accounts() {
   const [isShowModalSignUp, setIsShowModalSignUp] = useState(false);
   const [isShowModalLogIn, setIsShowModalLogIn] = useState(false);
   const [user, setUser] = useState("");
+
+  const SignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useHideClickOutside(accountRef, () => {
     setIsShowAccounts(false);
@@ -25,8 +35,8 @@ export default function Accounts() {
       <div className="flex items-center">
         <img src={AvatarAcc} alt="Account" className="h-7 w-7 rounded-lg md:h-10 md:w-10" />
         <p className="mr-1  font-DynaPuff text-Light_OnSurface dark:text-Dark_OnSurface max-md:text-xs md:block">
-          <span className="text-blue-800 dark:text-gray-200">Hi ,</span>
-          {user?.email?.split("@")[0]}
+          <span className="text-blue-800 dark:text-gray-200">Hi , </span>
+          {user?.email?.split("@")[0] || "User"}
         </p>
         <IoIosArrowDown
           className=" cursor-pointer text-blue-800 dark:text-gray-200 "
@@ -55,7 +65,10 @@ export default function Accounts() {
             >
               <BiLogIn /> Log In
             </li>
-            <li className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 ">
+            <li
+              className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 "
+              onClick={SignOut}
+            >
               <BiLogOut /> Log Out
             </li>
           </ul>
