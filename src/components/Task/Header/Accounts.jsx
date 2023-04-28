@@ -4,10 +4,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegIdBadge } from "react-icons/fa";
 import useHideClickOutside from "../../../hooks/useHideClickOutside";
+import ModalSignUp from "../../modal/ModalSignUp";
 
 export default function Accounts() {
   const [isShowAccount, setIsShowAccounts] = useState(false);
   const accountRef = useRef(null);
+  const [isShowModalSignUp, setIsShowModalSignUp] = useState(true);
 
   useHideClickOutside(accountRef, () => {
     setIsShowAccounts(false);
@@ -34,7 +36,12 @@ export default function Accounts() {
           className="absolute right-0 top-11 z-20 w-32 rounded-md bg-blue-400/70 text-left font-Montserrat text-sm font-semibold backdrop-blur-md "
         >
           <ul className="h-max ">
-            <li className="mx-2 mt-1 flex cursor-pointer items-center gap-1 rounded-md  pl-[2px] text-indigo-800 hover:text-indigo-200 ">
+            <li
+              className="mx-2 mt-1 flex cursor-pointer items-center gap-1 rounded-md  pl-[2px] text-indigo-800 hover:text-indigo-200 "
+              onClick={() => {
+                setIsShowModalSignUp((prev) => !prev);
+              }}
+            >
               <FaRegIdBadge /> sign Up
             </li>
             <li className="mx-2 mt-1 flex  cursor-pointer items-center  gap-1 rounded-md  text-indigo-800 hover:text-indigo-200">
@@ -45,6 +52,14 @@ export default function Accounts() {
             </li>
           </ul>
         </div>
+      )}
+
+      {isShowModalSignUp && (
+        <ModalSignUp
+          onClose={() => {
+            setIsShowModalSignUp(false);
+          }}
+        />
       )}
     </div>
   );
