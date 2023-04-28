@@ -7,6 +7,7 @@ import { auth } from "../../config/firebase-config";
 export default function ModalLogIn({ onClose }) {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const [errors, setErrors] = useState({ password: "", email: "" });
 
   const signIn = async () => {
     try {
@@ -15,6 +16,26 @@ export default function ModalLogIn({ onClose }) {
       onClose();
     } catch (error) {
       console.log(error.message);
+      switch (error.code) {
+        case "auth/user-not-found":
+          setErrors({
+            email: "There is no user record corresponding to this email.",
+            password: "",
+          });
+          break;
+        case "auth/wrong-password":
+          setErrors({
+            password: "The password is invalid.",
+            email: "",
+          });
+          break;
+        default:
+          setErrors({
+            password: "",
+            email: "",
+          });
+          break;
+      }
     }
   };
   return (
@@ -33,6 +54,7 @@ export default function ModalLogIn({ onClose }) {
               setSignInEmail(event.target.value);
             }}
           />
+          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
         </div>
 
         <div className="flex flex-col ">
@@ -48,6 +70,7 @@ export default function ModalLogIn({ onClose }) {
               setSignInPassword(event.target.value);
             }}
           />
+          {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
         </div>
 
         <Button className="bg-sky-800 text-slate-300" onClick={signIn}>
