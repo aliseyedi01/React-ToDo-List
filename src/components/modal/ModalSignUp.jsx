@@ -11,7 +11,8 @@ export default function ModalSignUp({ onClose }) {
   const signUp = async () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
-      console.log(user);
+      // console.log(user);
+      onClose();
     } catch (error) {
       console.log(error.message);
     }
