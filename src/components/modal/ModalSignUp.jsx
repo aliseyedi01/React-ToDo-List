@@ -7,6 +7,10 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 export default function ModalSignUp({ onClose }) {
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
+  const [errors, setErrors] = useState({
+    password: "",
+    email: "",
+  });
 
   const signUp = async () => {
     try {
@@ -15,6 +19,26 @@ export default function ModalSignUp({ onClose }) {
       onClose();
     } catch (error) {
       console.log(error.message);
+      switch (error.code) {
+        case "auth/weak-password":
+          setErrors({
+            password: "Password should be at least 6 characters",
+            email: "",
+          });
+          break;
+        case "auth/email-already-in-use":
+          setErrors({
+            password: "",
+            email: "The email address is already in use by another account.",
+          });
+          break;
+        default:
+          setErrors({
+            password: "",
+            email: "",
+          });
+          break;
+      }
     }
   };
 
@@ -34,6 +58,7 @@ export default function ModalSignUp({ onClose }) {
               setSignUpEmail(event.target.value);
             }}
           />
+          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}{" "}
         </div>
 
         <div className="flex flex-col ">
@@ -49,6 +74,7 @@ export default function ModalSignUp({ onClose }) {
               setSignUpPassword(event.target.value);
             }}
           />
+          {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}{" "}
         </div>
 
         <Button className="bg-sky-800 text-slate-300" onClick={signUp}>

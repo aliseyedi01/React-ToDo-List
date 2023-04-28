@@ -1,13 +1,17 @@
 import React, { useRef, useMemo, useState } from "react";
 import AvatarAcc from "../../../../assets/Image/AvatarAcc.png";
+
 import { IoIosArrowDown } from "react-icons/io";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegIdBadge } from "react-icons/fa";
+
 import useHideClickOutside from "../../../hooks/useHideClickOutside";
-import ModalSignUp from "../../modal/ModalSignUp";
+
 import { auth } from "../../../config/firebase-config";
-import ModalLogIn from "../../modal/ModalLogIn";
 import { onAuthStateChanged } from "firebase/auth";
+
+import ModalSignUp from "../../modal/ModalSignUp";
+import ModalLogIn from "../../modal/ModalLogIn";
 import ModalLogOut from "../../modal/ModalLogOut";
 
 export default function Accounts() {
@@ -17,6 +21,7 @@ export default function Accounts() {
   const [isShowModalLogIn, setIsShowModalLogIn] = useState(false);
   const [isShowModalLogOut, setIsShowModalLogOut] = useState(false);
   const [user, setUser] = useState("");
+  const [isLogIn, setIsLogIn] = useState(false);
 
   useHideClickOutside(accountRef, () => {
     setIsShowAccounts(false);
@@ -24,11 +29,12 @@ export default function Accounts() {
 
   useMemo(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      console.log("currentUser", currentUser);
+      setIsLogIn(true);
       if (currentUser) {
         setUser(currentUser);
       } else {
         setUser("");
+        setIsLogIn(false);
       }
     });
   }, [isShowModalLogOut, isShowModalLogIn, isShowModalSignUp]);
@@ -55,30 +61,36 @@ export default function Accounts() {
           className="absolute right-0 top-11 z-20 w-32 rounded-md bg-blue-400/70 text-left font-Montserrat text-sm font-semibold backdrop-blur-md "
         >
           <ul className="h-max ">
-            <li
-              className="mx-2 mt-1 flex cursor-pointer items-center gap-1 rounded-md  pl-[2px] text-indigo-800 hover:text-indigo-200 "
-              onClick={() => {
-                setIsShowModalSignUp((prev) => !prev);
-              }}
-            >
-              <FaRegIdBadge /> sign Up
-            </li>
-            <li
-              className="mx-2 mt-1 flex  cursor-pointer items-center  gap-1 rounded-md  text-indigo-800 hover:text-indigo-200"
-              onClick={() => {
-                setIsShowModalLogIn((prev) => !prev);
-              }}
-            >
-              <BiLogIn /> Log In
-            </li>
-            <li
-              className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 "
-              onClick={() => {
-                setIsShowModalLogOut((prev) => !prev);
-              }}
-            >
-              <BiLogOut /> Log Out
-            </li>
+            {!isLogIn && (
+              <>
+                <li
+                  className="mx-2 mt-1 flex cursor-pointer items-center gap-1 rounded-md  pl-[2px] text-indigo-800 hover:text-indigo-200 "
+                  onClick={() => {
+                    setIsShowModalSignUp((prev) => !prev);
+                  }}
+                >
+                  <FaRegIdBadge /> sign Up
+                </li>
+                <li
+                  className="mx-2 mt-1 flex  cursor-pointer items-center  gap-1 rounded-md  text-indigo-800 hover:text-indigo-200"
+                  onClick={() => {
+                    setIsShowModalLogIn((prev) => !prev);
+                  }}
+                >
+                  <BiLogIn /> Log In
+                </li>
+              </>
+            )}
+            {isLogIn && (
+              <li
+                className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 "
+                onClick={() => {
+                  setIsShowModalLogOut((prev) => !prev);
+                }}
+              >
+                <BiLogOut /> Log Out
+              </li>
+            )}
           </ul>
         </div>
       )}
