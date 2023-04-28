@@ -5,42 +5,34 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { FaRegIdBadge } from "react-icons/fa";
 import useHideClickOutside from "../../../hooks/useHideClickOutside";
 import ModalSignUp from "../../modal/ModalSignUp";
-import { signOut } from "firebase/auth";
 import { auth } from "../../../config/firebase-config";
 import ModalLogIn from "../../modal/ModalLogIn";
 import { onAuthStateChanged } from "firebase/auth";
+import ModalLogOut from "../../modal/ModalLogOut";
 
 export default function Accounts() {
   const [isShowAccount, setIsShowAccounts] = useState(false);
   const accountRef = useRef(null);
   const [isShowModalSignUp, setIsShowModalSignUp] = useState(false);
   const [isShowModalLogIn, setIsShowModalLogIn] = useState(false);
+  const [isShowModalLogOut, setIsShowModalLogOut] = useState(false);
   const [user, setUser] = useState("");
-
-  const SignOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   useHideClickOutside(accountRef, () => {
     setIsShowAccounts(false);
   });
 
-  const handleShowAccount = () => {
-    setIsShowAccounts((prev) => !prev);
-  };
-
   useMemo(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      //   console.log("currentUser", currentUser);
+      console.log("currentUser", currentUser);
       if (currentUser) {
         setUser(currentUser);
+      } else {
+        setUser("");
       }
     });
-  }, []);
+  }, [isShowModalLogOut, isShowModalLogIn, isShowModalSignUp]);
+
   return (
     <div className="relative">
       <div className="flex items-center">
@@ -51,7 +43,9 @@ export default function Accounts() {
         </p>
         <IoIosArrowDown
           className=" cursor-pointer text-blue-800 dark:text-gray-200 "
-          onClick={handleShowAccount}
+          onClick={() => {
+            setIsShowAccounts((prev) => !prev);
+          }}
         ></IoIosArrowDown>
       </div>
 
@@ -79,7 +73,9 @@ export default function Accounts() {
             </li>
             <li
               className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 "
-              onClick={SignOut}
+              onClick={() => {
+                setIsShowModalLogOut((prev) => !prev);
+              }}
             >
               <BiLogOut /> Log Out
             </li>
@@ -99,6 +95,15 @@ export default function Accounts() {
         <ModalLogIn
           onClose={() => {
             setIsShowModalLogIn(false);
+          }}
+        />
+      )}
+
+      {isShowModalLogOut && (
+        <ModalLogOut
+          user={user}
+          onClose={() => {
+            setIsShowModalLogOut(false);
           }}
         />
       )}

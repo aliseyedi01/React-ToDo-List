@@ -12,7 +12,6 @@ export default function ModalLogIn({ onClose }) {
     try {
       const user = await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
       console.log(user);
-      console.log("sign IN");
     } catch (error) {
       console.log(error.message);
     }
