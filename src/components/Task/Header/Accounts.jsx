@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import AvatarAcc from "../../../../assets/Image/AvatarAcc.png";
 import { IoIosArrowDown } from "react-icons/io";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
@@ -7,6 +7,8 @@ import useHideClickOutside from "../../../hooks/useHideClickOutside";
 import ModalSignUp from "../../modal/ModalSignUp";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../config/firebase-config";
+import ModalLogIn from "../../modal/ModalLogIn";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Accounts() {
   const [isShowAccount, setIsShowAccounts] = useState(false);
@@ -30,6 +32,15 @@ export default function Accounts() {
   const handleShowAccount = () => {
     setIsShowAccounts((prev) => !prev);
   };
+
+  useMemo(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      //   console.log("currentUser", currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    });
+  }, []);
   return (
     <div className="relative">
       <div className="flex items-center">
@@ -43,6 +54,7 @@ export default function Accounts() {
           onClick={handleShowAccount}
         ></IoIosArrowDown>
       </div>
+
       {isShowAccount && (
         <div
           ref={accountRef}
@@ -77,15 +89,14 @@ export default function Accounts() {
 
       {isShowModalSignUp && (
         <ModalSignUp
-          user={user}
-          setUser={setUser}
           onClose={() => {
             setIsShowModalSignUp(false);
           }}
         />
       )}
+
       {isShowModalLogIn && (
-        <ModalSignUp
+        <ModalLogIn
           onClose={() => {
             setIsShowModalLogIn(false);
           }}

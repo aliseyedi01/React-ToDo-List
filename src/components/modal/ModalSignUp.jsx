@@ -1,30 +1,24 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import { Button, LabelModal } from "../customs/@core";
 import { auth } from "../../config/firebase-config";
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-export default function SignUp({ onClose, setUser }) {
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+export default function ModalSignUp({ onClose }) {
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
 
   const signUp = async () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
-      //   console.log(user);
+      console.log(user);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  useMemo(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      console.log("currentUser", currentUser);
-      setUser(currentUser);
-    });
-  });
-
   return (
-    <Modal onClose={onClose} title="Log In" className="w-80">
+    <Modal onClose={onClose} title="Sign Up" className="w-80">
       <div className="flex h-max flex-col gap-2 text-gray-900 ">
         <div className="flex flex-col ">
           <LabelModal htmlFor="email" className="mb-1 text-sm">
@@ -57,7 +51,7 @@ export default function SignUp({ onClose, setUser }) {
         </div>
 
         <Button className="bg-sky-800 text-slate-300" onClick={signUp}>
-          Log In
+          sign Up
         </Button>
       </div>
     </Modal>
