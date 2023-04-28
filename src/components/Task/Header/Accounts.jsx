@@ -9,7 +9,8 @@ import ModalSignUp from "../../modal/ModalSignUp";
 export default function Accounts() {
   const [isShowAccount, setIsShowAccounts] = useState(false);
   const accountRef = useRef(null);
-  const [isShowModalSignUp, setIsShowModalSignUp] = useState(true);
+  const [isShowModalSignUp, setIsShowModalSignUp] = useState(false);
+  const [isShowModalLogIn, setIsShowModalLogIn] = useState(false);
 
   useHideClickOutside(accountRef, () => {
     setIsShowAccounts(false);
@@ -44,7 +45,12 @@ export default function Accounts() {
             >
               <FaRegIdBadge /> sign Up
             </li>
-            <li className="mx-2 mt-1 flex  cursor-pointer items-center  gap-1 rounded-md  text-indigo-800 hover:text-indigo-200">
+            <li
+              className="mx-2 mt-1 flex  cursor-pointer items-center  gap-1 rounded-md  text-indigo-800 hover:text-indigo-200"
+              onClick={() => {
+                setIsShowModalLogIn((prev) => !prev);
+              }}
+            >
               <BiLogIn /> Log In
             </li>
             <li className="mx-2 my-1 flex cursor-pointer items-center gap-1   rounded-md text-gray-800 hover:text-neutral-600 ">
@@ -58,6 +64,13 @@ export default function Accounts() {
         <ModalSignUp
           onClose={() => {
             setIsShowModalSignUp(false);
+          }}
+        />
+      )}
+      {isShowModalLogIn && (
+        <ModalSignUp
+          onClose={() => {
+            setIsShowModalLogIn(false);
           }}
         />
       )}
