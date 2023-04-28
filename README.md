@@ -60,6 +60,8 @@ ToDo List App for learning React
   - Users can choose light and dark mode base on your like
 - Notification
   - send a notification when have imporantn and uncompete task
+- Authetication
+  - sign up , log in and log out with firebase
 
 ## Technologies used
 
@@ -78,6 +80,8 @@ ToDo List App for learning React
     - useDarkMode
     - useHideClickButton
     - useMediaQuery
+- authentication
+  - firebase
 - Style
   - FrameWork
     - TailwinCss
